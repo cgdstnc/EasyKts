@@ -1,0 +1,79 @@
+SSLF4J: The requested version 1.7.16 by your slf4j binding is not compatible with [1.6]
+SLF4J: See http://www.slf4j.org/codes.html#version_mismatch for further details.
+15:50:32.018 [AWT-EventQueue-0] INFO  com.github.sarxos.webcam.Webcam - WebcamDefaultDriver capture driver will be used
+15:50:33.198 [atomic-processor-1] INFO  c.g.s.webcam.ds.cgt.WebcamOpenTask - Opening webcam 1.3M WebCam 1
+Cannot execute task
+com.github.sarxos.webcam.WebcamException: Cannot execute task
+	at com.github.sarxos.webcam.WebcamProcessor$AtomicProcessor.process(WebcamProcessor.java:72)
+	at com.github.sarxos.webcam.WebcamProcessor.process(WebcamProcessor.java:140)
+	at com.github.sarxos.webcam.WebcamTask.process(WebcamTask.java:46)
+	at com.github.sarxos.webcam.ds.cgt.WebcamOpenTask.open(WebcamOpenTask.java:20)
+	at com.github.sarxos.webcam.Webcam.open(Webcam.java:271)
+	at com.github.sarxos.webcam.Webcam.open(Webcam.java:232)
+	at EasyKts.Frame.changeCam(Frame.java:583)
+	at EasyKts.Frame.access$000(Frame.java:51)
+	at EasyKts.Frame$1.run(Frame.java:104)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.github.sarxos.webcam.WebcamException: Cannot start native grabber!
+	at com.github.sarxos.webcam.ds.buildin.WebcamDefaultDevice.open(WebcamDefaultDevice.java:330)
+	at com.github.sarxos.webcam.ds.cgt.WebcamOpenTask.handle(WebcamOpenTask.java:38)
+	at com.github.sarxos.webcam.WebcamProcessor$AtomicProcessor.run(WebcamProcessor.java:81)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	... 1 more
+SLF4J: The requested version 1.7.16 by your slf4j binding is not compatible with [1.6]
+SLF4J: See http://www.slf4j.org/codes.html#version_mismatch for further details.
+15:51:05.158 [AWT-EventQueue-0] INFO  com.github.sarxos.webcam.Webcam - WebcamDefaultDriver capture driver will be used
+15:51:06.287 [atomic-processor-1] INFO  c.g.s.webcam.ds.cgt.WebcamOpenTask - Opening webcam 1.3M WebCam 1
+Cannot execute task
+com.github.sarxos.webcam.WebcamException: Cannot execute task
+	at com.github.sarxos.webcam.WebcamProcessor$AtomicProcessor.process(WebcamProcessor.java:72)
+	at com.github.sarxos.webcam.WebcamProcessor.process(WebcamProcessor.java:140)
+	at com.github.sarxos.webcam.WebcamTask.process(WebcamTask.java:46)
+	at com.github.sarxos.webcam.ds.cgt.WebcamOpenTask.open(WebcamOpenTask.java:20)
+	at com.github.sarxos.webcam.Webcam.open(Webcam.java:271)
+	at com.github.sarxos.webcam.Webcam.open(Webcam.java:232)
+	at EasyKts.Frame.changeCam(Frame.java:583)
+	at EasyKts.Frame.access$000(Frame.java:51)
+	at EasyKts.Frame$1.run(Frame.java:104)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.github.sarxos.webcam.WebcamException: Cannot start native grabber!
+	at com.github.sarxos.webcam.ds.buildin.WebcamDefaultDevice.open(WebcamDefaultDevice.java:330)
+	at com.github.sarxos.webcam.ds.cgt.WebcamOpenTask.handle(WebcamOpenTask.java:38)
+	at com.github.sarxos.webcam.WebcamProcessor$AtomicProcessor.run(WebcamProcessor.java:81)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	... 1 more
+SLF4J: The requested version 1.7.16 by your slf4j binding is not compatible with [1.6]
+SLF4J: See http://www.slf4j.org/codes.html#version_mismatch for further details.
+15:51:18.029 [AWT-EventQueue-0] INFO  com.github.sarxos.webcam.Webcam - WebcamDefaultDriver capture driver will be used
+15:51:19.163 [atomic-processor-1] INFO  c.g.s.webcam.ds.cgt.WebcamOpenTask - Opening webcam 1.3M WebCam 1
+15:51:26.658 [atomic-processor-1] INFO  c.g.s.webcam.ds.cgt.WebcamCloseTask - Closing 1.3M WebCam 1
+15:51:26.799 [atomic-processor-1] INFO  c.g.s.webcam.ds.cgt.WebcamOpenTask - Opening webcam 1.3M WebCam 1
+java.lang.NullPointerException
+	at EasyKts.Frame.rgbToGrayscaleBW(Frame.java:813)
+	at EasyKts.Frame.getTC(Frame.java:714)
+	at EasyKts.Frame.access$1000(Frame.java:51)
+	at EasyKts.Frame$9.run(Frame.java:783)
+	at java.lang.Thread.run(Thread.java:748)
+15:51:31.419 [atomic-processor-1] INFO  c.g.s.webcam.ds.cgt.WebcamCloseTask - Closing 1.3M WebCam 1
+java.lang.NullPointerException
+	at org.openimaj.image.ImageUtilities.createWorkingImage(ImageUtilities.java:185)
+	at org.openimaj.image.ImageUtilities.createFImage(ImageUtilities.java:284)
+	at EasyKts.Frame$10.run(Frame.java:837)
+	at java.lang.Thread.run(Thread.java:748)
+15:51:31.561 [atomic-processor-1] INFO  c.g.s.webcam.ds.cgt.WebcamOpenTask - Opening webcam USB2.0 Camera 0
+15:51:38.339 [shutdown-hook-3] INFO  c.g.sarxos.webcam.WebcamShutdownHook - Automatic USB2.0 Camera 0 deallocation
+15:51:38.345 [shutdown-hook-3] INFO  com.github.sarxos.webcam.Webcam - Disposing webcam USB2.0 Camera 0
+SLF4J: The requested version 1.7.16 by your slf4j binding is not compatible with [1.6]
+SLF4J: See http://www.slf4j.org/codes.html#version_mismatch for further details.
+15:55:09.335 [AWT-EventQueue-0] INFO  com.github.sarxos.webcam.Webcam - WebcamDefaultDriver capture driver will be used
+15:55:13.993 [atomic-processor-1] INFO  c.g.s.webcam.ds.cgt.WebcamOpenTask - Opening webcam USB2.0 Camera 0
+15:55:44.103 [shutdown-hook-1] INFO  c.g.sarxos.webcam.WebcamShutdownHook - Automatic USB2.0 Camera 0 deallocation
+15:55:44.106 [shutdown-hook-1] INFO  com.github.sarxos.webcam.Webcam - Disposing webcam USB2.0 Camera 0
+SLF4J: The requested version 1.7.16 by your slf4j binding is not compatible with [1.6]
+SLF4J: See http://www.slf4j.org/codes.html#version_mismatch for further details.
+15:55:46.811 [AWT-EventQueue-0] INFO  com.github.sarxos.webcam.Webcam - WebcamDefaultDriver capture driver will be used
+15:55:48.014 [atomic-processor-1] INFO  c.g.s.webcam.ds.cgt.WebcamOpenTask - Opening webcam USB2.0 Camera 0
+15:56:00.372 [shutdown-hook-1] INFO  c.g.sarxos.webcam.WebcamShutdownHook - Automatic USB2.0 Camera 0 deallocation
+15:56:00.375 [shutdown-hook-1] INFO  com.github.sarxos.webcam.Webcam - Disposing webcam USB2.0 Camera 0

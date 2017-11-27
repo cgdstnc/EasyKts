@@ -1,0 +1,5 @@
+projectKey=easyKTS
+serverUrl=http://192.168.12.242:9000
+dashboardUrl=http://192.168.12.242:9000/dashboard/index/easyKTS
+ceTaskId=AV6AzqLfJ7vkGpAzLN5j
+ceTaskUrl=http://192.168.12.242:9000/api/ce/task?id=AV6AzqLfJ7vkGpAzLN5j

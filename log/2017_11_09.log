@@ -1,0 +1,111 @@
+SLF4J: The requested version 1.7.16 by your slf4j binding is not compatible with [1.6]
+SLF4J: See http://www.slf4j.org/codes.html#version_mismatch for further details.
+12:15:26.529 [AWT-EventQueue-0] INFO  com.github.sarxos.webcam.Webcam - WebcamDefaultDriver capture driver will be used
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/D:/libs/Tess4J/Tess4J-3.4.1/lib/logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/D:/libs/openIMAJ/slf4j-jdk14-1.5.6.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+14:05:07.725 [AWT-EventQueue-0] INFO com.github.sarxos.webcam.Webcam - WebcamDefaultDriver capture driver will be used
+14:05:07.738 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/D:/libs/Tess4J/Tess4J-3.4.1/lib/logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/D:/libs/openIMAJ/slf4j-jdk14-1.5.6.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+14:05:21.104 [AWT-EventQueue-0] INFO com.github.sarxos.webcam.Webcam - WebcamDefaultDriver capture driver will be used
+14:05:21.114 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:05:21.965 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:05:21.967 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:05:22.483 [Thread-3] DEBUG com.github.sarxos.webcam.Webcam - Setting new resolution 640x480
+14:05:22.496 [Thread-3] DEBUG com.github.sarxos.webcam.WebcamLock - Lock Webcam USB2.0 Camera 0
+14:05:22.508 [atomic-processor-1] INFO com.github.sarxos.webcam.ds.cgt.WebcamOpenTask - Opening webcam USB2.0 Camera 0
+14:05:22.510 [atomic-processor-1] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDevice - Opening webcam device USB2.0 Camera 0
+14:05:22.511 [atomic-processor-1] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDevice - Webcam device 0 starting session, size java.awt.Dimension[width=640,height=480]
+14:05:24.971 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:05:26.250 [atomic-processor-1] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDevice - Webcam device session started
+14:05:26.251 [atomic-processor-1] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDevice - Initialize buffer
+14:05:29.627 [atomic-processor-1] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDevice - Webcam device com.github.sarxos.webcam.ds.buildin.WebcamDefaultDevice@6e96fc4b is now open
+14:05:29.629 [Thread-3] DEBUG com.github.sarxos.webcam.Webcam - Webcam is now open USB2.0 Camera 0
+14:05:29.631 [Thread-3] DEBUG com.github.sarxos.webcam.WebcamPanel - Starting panel rendering and trying to open attached webcam
+14:05:29.632 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:05:29.633 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:05:29.678 [Thread-3] DEBUG com.github.sarxos.webcam.Webcam - Webcam is already open USB2.0 Camera 0
+14:05:32.634 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:05:32.687 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:05:32.688 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:05:35.690 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:05:35.696 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:05:35.698 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:05:38.701 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:05:38.732 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:05:38.734 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:05:41.735 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:05:41.774 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:05:41.775 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:05:44.776 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:05:44.813 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:05:44.813 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:05:47.815 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:05:47.852 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:05:47.854 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:05:50.855 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:05:50.860 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:05:50.861 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:05:53.863 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:05:53.915 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:05:53.916 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:05:56.917 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:05:56.974 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:05:56.975 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:05:59.977 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:05:59.996 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:05:59.996 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:02.997 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:03.002 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:03.003 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:06.005 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:06.026 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:06.027 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:09.028 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:09.038 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:09.039 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:12.040 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:12.062 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:12.064 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:15.066 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:15.102 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:15.103 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:18.105 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:18.128 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:18.129 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:21.131 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:21.166 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:21.167 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:24.169 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:24.205 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:24.206 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:27.207 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:27.228 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:27.229 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:30.231 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:30.240 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:30.242 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:33.243 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:33.260 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:33.262 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:36.263 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:36.270 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:36.271 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:39.272 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:39.289 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:39.290 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
+14:06:42.090 [shutdown-hook-1] INFO com.github.sarxos.webcam.WebcamShutdownHook - Automatic USB2.0 Camera 0 deallocation
+14:06:42.092 [shutdown-hook-1] INFO com.github.sarxos.webcam.Webcam - Disposing webcam USB2.0 Camera 0
+14:06:42.120 [atomic-processor-1] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDevice - Disposing webcam device USB2.0 Camera 0
+14:06:42.121 [atomic-processor-1] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDevice - Closing webcam device
+14:06:42.291 [shutdown-hook-1] DEBUG com.github.sarxos.webcam.WebcamPanel - Stopping panel rendering and closing attached webcam
+14:06:42.291 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+14:06:42.293 [shutdown-hook-1] DEBUG com.github.sarxos.webcam.Webcam - Webcam disposed USB2.0 Camera 0
+14:06:42.296 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device USB2.0 Camera 0
+14:06:42.297 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Found device 1.3M WebCam 1
