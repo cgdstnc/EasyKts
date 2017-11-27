@@ -29,7 +29,7 @@ public class FileSaver {
     }
 
     public static void save(BufferedImage img, boolean addWatermark, String fileName) throws IOException {
-        File folder = new File("output");
+        File folder = new File("KimlikOutput");
         folder.mkdirs();
         File f = new File(folder.getAbsolutePath() + "\\" + fileName);
 
@@ -48,7 +48,8 @@ public class FileSaver {
     }
 
     public static void save(String text, String file) throws IOException {
-        File folder = new File("output");
+        File folder = new File("KimlikOutput");
+        folder.mkdirs();
         File f = new File(folder.getAbsolutePath() + "\\" + file);
         FileWriter fileWriter = new FileWriter(f);
         fileWriter.append(text);

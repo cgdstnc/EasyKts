@@ -209,6 +209,11 @@ public class MainFrameController {
         frame.jbSaveAll.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                faceDetector.stop();
+                lockFoundFace = true;
+                barcodeReader.stop();
+                lockFoundBarcode=true;
+                
                 frame.jfSaveOnay.setSize((int) screenSize.width / 2, 165);
                 frame.jfSaveOnay.setLocationRelativeTo(null);
                 frame.jfSaveOnay.setVisible(true);

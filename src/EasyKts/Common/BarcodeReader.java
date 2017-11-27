@@ -44,7 +44,7 @@ public class BarcodeReader {
         tmpHintsMap.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
         tmpHintsMap.put(DecodeHintType.POSSIBLE_FORMATS,
                 EnumSet.allOf(BarcodeFormat.class));
-        tmpHintsMap.put(DecodeHintType.PURE_BARCODE, Boolean.FALSE);
+        //tmpHintsMap.put(DecodeHintType.PURE_BARCODE, Boolean.FALSE);
 
         BinaryBitmap binaryBitmap = new BinaryBitmap(
                 new HybridBinarizer(
