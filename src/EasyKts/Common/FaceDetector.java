@@ -36,10 +36,10 @@ public class FaceDetector {
 
     private Camera camera;
     private MainFrameController controller;
-    
-    public FaceDetector(Camera camera,MainFrameController controller) {
+
+    public FaceDetector(Camera camera, MainFrameController controller) {
         this.camera = camera;
-        this.controller=controller;
+        this.controller = controller;
     }
 
     public void startFaceDetectionThread(long timeOut) {
@@ -52,8 +52,10 @@ public class FaceDetector {
                     long valid = faceThreadValid;
                     long start = System.currentTimeMillis();
                     int i = 0;
-                    
+
                     while (valid == faceThreadValid) {//yeni thread başladığında arkadaki threadler dursun
+                        LOGGER.log(Level.INFO, Thread.currentThread().getId() + " faceThread is Running.");
+
                         if ((System.currentTimeMillis() - start) > timeOut) {
                             return;
                         }
@@ -62,7 +64,7 @@ public class FaceDetector {
 
                             List<DetectedFace> biggestFace = faceDetector.detectFaces(ImageUtilities.createFImage(newFrame));
 
-                            if (biggestFace.size() != 0) {
+                            if (!biggestFace.isEmpty()) {
                                 DetectedFace face = biggestFace.get(0);
                                 for (DetectedFace itr : biggestFace) {
                                     if (itr.getBounds().getHeight() * itr.getBounds().getWidth() > face.getBounds().getHeight() * itr.getBounds().getWidth()) {
@@ -89,11 +91,13 @@ public class FaceDetector {
                                 }
 
                                 notifyController(new Surat(newFrame, buf, x, y));
-                                
+                                System.out.println("i:" + i);
 
                                 i++;
-                                if (i > 20) {
-                                    break;//ilk koyarken yuzu bulunca hemen cikmasin bulaniklik azalsin
+                                if (i > 2) {
+                                    valid=-1;
+                                    return;
+//                                    break;//ilk koyarken yuzu bulunca hemen cikmasin bulaniklik azalsin
                                 }
                             }
                         } catch (Exception e) {
@@ -108,20 +112,20 @@ public class FaceDetector {
             faceDetectionThread.start();
         }
     }
-    
-    private void notifyController(Surat surat){
-        if (controller!=null) {
+
+    private void notifyController(Surat surat) {
+        if (controller != null) {
             controller.setSurat(surat);
         }
     }
-    
-    public void stop(){
-        faceThreadValid=null;
+
+    public void stop() {
+        faceThreadValid = null;
     }
-    
+
     public void setCamera(Camera camera) {
         stop();
         this.camera = camera;
     }
-    
+
 }

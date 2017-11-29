@@ -30,10 +30,6 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jfManuel = new javax.swing.JFrame();
-        jpImage = new javax.swing.JPanel();
-        jpManuelKaydet = new javax.swing.JPanel();
-        jbManuelKaydet = new javax.swing.JButton();
         jfSaveOnay = new javax.swing.JFrame();
         jpFaceOnay = new javax.swing.JPanel();
         jlFaceOnay = new javax.swing.JLabel();
@@ -46,71 +42,22 @@ public class MainFrame extends javax.swing.JFrame {
         jbStartOver = new javax.swing.JButton();
         jcbKaydetOnay = new javax.swing.JCheckBox();
         jpSelectCam = new javax.swing.JPanel();
-        jcbCams = new javax.swing.JComboBox<>();
+        jcbCams = new javax.swing.JComboBox<String>();
         jpMain = new javax.swing.JPanel();
         jpCamera = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jpFaceMainContainer = new javax.swing.JPanel();
         jpFace = new javax.swing.JPanel();
         jlFace = new javax.swing.JLabel();
-        jbKimlikSave = new javax.swing.JButton();
         jbKimlikReset = new javax.swing.JButton();
-        jbKimlikManuel = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jpTC = new javax.swing.JPanel();
+        jpBarcodeContainer = new javax.swing.JPanel();
         jlBarcodeText = new javax.swing.JLabel();
         jbBarcodeReset = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jpSaveAll = new javax.swing.JPanel();
         jbSaveAll = new javax.swing.JButton();
         jbResetAll = new javax.swing.JButton();
-
-        jfManuel.setMinimumSize(new java.awt.Dimension(700, 150));
-
-        jpImage.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout jpImageLayout = new javax.swing.GroupLayout(jpImage);
-        jpImage.setLayout(jpImageLayout);
-        jpImageLayout.setHorizontalGroup(
-            jpImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 346, Short.MAX_VALUE)
-        );
-        jpImageLayout.setVerticalGroup(
-            jpImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 268, Short.MAX_VALUE)
-        );
-
-        jpManuelKaydet.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jbManuelKaydet.setText("Kaydet");
-
-        javax.swing.GroupLayout jpManuelKaydetLayout = new javax.swing.GroupLayout(jpManuelKaydet);
-        jpManuelKaydet.setLayout(jpManuelKaydetLayout);
-        jpManuelKaydetLayout.setHorizontalGroup(
-            jpManuelKaydetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jbManuelKaydet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jpManuelKaydetLayout.setVerticalGroup(
-            jpManuelKaydetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpManuelKaydetLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jbManuelKaydet))
-        );
-
-        javax.swing.GroupLayout jfManuelLayout = new javax.swing.GroupLayout(jfManuel.getContentPane());
-        jfManuel.getContentPane().setLayout(jfManuelLayout);
-        jfManuelLayout.setHorizontalGroup(
-            jfManuelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jpManuelKaydet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jfManuelLayout.setVerticalGroup(
-            jfManuelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jfManuelLayout.createSequentialGroup()
-                .addComponent(jpImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(1, 1, 1)
-                .addComponent(jpManuelKaydet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
 
         jpFaceOnay.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jpFaceOnay.setMaximumSize(new java.awt.Dimension(110, 110));
@@ -226,7 +173,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jpSelectCam.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jcbCams.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lütfen Bekleyiniz" }));
+        jcbCams.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lütfen Bekleyiniz" }));
 
         javax.swing.GroupLayout jpSelectCamLayout = new javax.swing.GroupLayout(jpSelectCam);
         jpSelectCam.setLayout(jpSelectCamLayout);
@@ -289,11 +236,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(jlFace, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jbKimlikSave.setText("Kaydet");
-
-        jbKimlikReset.setText("Sıfırla");
-
-        jbKimlikManuel.setText("Manuel");
+        jbKimlikReset.setText("Tekrar Al");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Kimlik Tanıma");
@@ -302,9 +245,7 @@ public class MainFrame extends javax.swing.JFrame {
         jpFaceMainContainer.setLayout(jpFaceMainContainerLayout);
         jpFaceMainContainerLayout.setHorizontalGroup(
             jpFaceMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jbKimlikSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jbKimlikReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jbKimlikManuel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jpFaceMainContainerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpFaceMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,15 +260,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpFace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbKimlikSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbKimlikReset)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbKimlikManuel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jpTC.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jpBarcodeContainer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jlBarcodeText.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlBarcodeText.setForeground(new java.awt.Color(102, 102, 102));
@@ -338,23 +275,23 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("QR Kod / Barkod");
 
-        javax.swing.GroupLayout jpTCLayout = new javax.swing.GroupLayout(jpTC);
-        jpTC.setLayout(jpTCLayout);
-        jpTCLayout.setHorizontalGroup(
-            jpTCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jpBarcodeContainerLayout = new javax.swing.GroupLayout(jpBarcodeContainer);
+        jpBarcodeContainer.setLayout(jpBarcodeContainerLayout);
+        jpBarcodeContainerLayout.setHorizontalGroup(
+            jpBarcodeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jbBarcodeReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jpTCLayout.createSequentialGroup()
+            .addGroup(jpBarcodeContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpTCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpBarcodeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlBarcodeText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jpTCLayout.createSequentialGroup()
+                    .addGroup(jpBarcodeContainerLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jpTCLayout.setVerticalGroup(
-            jpTCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpTCLayout.createSequentialGroup()
+        jpBarcodeContainerLayout.setVerticalGroup(
+            jpBarcodeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpBarcodeContainerLayout.createSequentialGroup()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlBarcodeText, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -365,9 +302,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         jpSaveAll.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jbSaveAll.setText("Tümünü Kaydet");
+        jbSaveAll.setText("Kaydet");
 
-        jbResetAll.setText("Tümünü Sıfırla");
+        jbResetAll.setText("Sıfırla");
 
         javax.swing.GroupLayout jpSaveAllLayout = new javax.swing.GroupLayout(jpSaveAll);
         jpSaveAll.setLayout(jpSaveAllLayout);
@@ -395,7 +332,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jpFaceMainContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpTC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpBarcodeContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jpSaveAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jpMainLayout.setVerticalGroup(
@@ -404,7 +341,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jpMainLayout.createSequentialGroup()
                 .addComponent(jpFaceMainContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpTC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpBarcodeContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpSaveAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -469,34 +406,28 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     public javax.swing.JButton jbBarcodeReset;
-    public javax.swing.JButton jbKimlikManuel;
     public javax.swing.JButton jbKimlikReset;
-    public javax.swing.JButton jbKimlikSave;
-    public javax.swing.JButton jbManuelKaydet;
     public javax.swing.JButton jbResetAll;
     public javax.swing.JButton jbSaveAll;
     public javax.swing.JButton jbSaveFinal;
     public javax.swing.JButton jbStartOver;
     public javax.swing.JComboBox<String> jcbCams;
     public javax.swing.JCheckBox jcbKaydetOnay;
-    public javax.swing.JFrame jfManuel;
     public javax.swing.JFrame jfSaveOnay;
     public javax.swing.JLabel jlBarcodeOkunan;
     public javax.swing.JLabel jlBarcodeText;
     public javax.swing.JLabel jlFace;
     public javax.swing.JLabel jlFaceOnay;
     public javax.swing.JLabel jlKimlikOnay;
+    public javax.swing.JPanel jpBarcodeContainer;
     public javax.swing.JPanel jpBarcodeOnay;
     public javax.swing.JPanel jpCamera;
     public javax.swing.JPanel jpFace;
     public javax.swing.JPanel jpFaceMainContainer;
     public javax.swing.JPanel jpFaceOnay;
-    public javax.swing.JPanel jpImage;
     public javax.swing.JPanel jpKimlikOnay;
     public javax.swing.JPanel jpMain;
-    public javax.swing.JPanel jpManuelKaydet;
     public javax.swing.JPanel jpSaveAll;
     public javax.swing.JPanel jpSelectCam;
-    public javax.swing.JPanel jpTC;
     // End of variables declaration//GEN-END:variables
 }

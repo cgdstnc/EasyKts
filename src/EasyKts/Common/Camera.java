@@ -6,6 +6,8 @@
 package EasyKts.Common;
 
 import EasyKts.Controller.MainFrameController;
+import EasyKts.Controller.CustomWebcamPanel;
+import EasyKts.System.SettingFunctions;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamMotionDetector;
 import com.github.sarxos.webcam.WebcamMotionEvent;
@@ -29,10 +31,10 @@ public class Camera implements WebcamMotionListener {
     private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(Camera.class.getName());
 
     private Webcam webcam = null;
-    private WebcamPanel webcamPanel = null;
+    private CustomWebcamPanel webcamPanel = null;
     private WebcamMotionDetector motionDetector;
 
-    MainFrameController controller;
+    private MainFrameController controller;
 
     public Camera(MainFrameController controller) {
         if (Webcam.getWebcams().size() < 1) {
@@ -70,7 +72,7 @@ public class Camera implements WebcamMotionListener {
         webcam = Webcam.getWebcams().get(index);
         Dimension dim = getMaxSize(webcam);
         webcam.setViewSize(dim);
-        webcamPanel = new WebcamPanel(webcam, false);
+        webcamPanel = new CustomWebcamPanel(webcam, false,controller);
         webcamPanel.setFPSDisplayed(false);
 
         if (webcam.isOpen()) {
@@ -110,7 +112,7 @@ public class Camera implements WebcamMotionListener {
                 return changeCam(i);
             }
         }
-        return 0;
+        return changeCam(0);
     }
 
     public void startWebcamMotionDetector() throws Throwable {
@@ -130,13 +132,19 @@ public class Camera implements WebcamMotionListener {
         return webcam.getImage();
     }
 
-    public WebcamPanel getWebcamPanel() {
+    public CustomWebcamPanel getWebcamPanel() {
         return webcamPanel;
     }
 
     @Override
     public void motionDetected(WebcamMotionEvent wme) {
         LOGGER.log(Level.INFO,"Hareket algilandi.",wme);
-        controller.reset();
+        if (SettingFunctions.getSettings().getResetBarcodeOnMotion()) {
+            controller.resetBarcode(true);
+        }
+        if (SettingFunctions.getSettings().getResetFaceOnMotion()) {
+            controller.resetFace(true);
+        }
+//        controller.reset();
     }
 }

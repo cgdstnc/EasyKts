@@ -58,7 +58,9 @@ public class BarcodeReader {
             System.out.println(result.getBarcodeFormat());
             return result;
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, e.toString(), e);
+            if (!e.getClass().toString().contains("com.google.zxing.NotFoundException")) {
+                LOGGER.log(Level.SEVERE, e.toString(), e);
+            }
             return null;
         }
     }
@@ -75,19 +77,21 @@ public class BarcodeReader {
                     int i = 0;
 
                     while (valid == barcodeThreadValid) {//yeni thread başladığında arkadaki threadler dursun
+                        LOGGER.log(Level.INFO, Thread.currentThread().getId() + " barcodeThread is Running.");
                         if ((System.currentTimeMillis() - start) > timeOut) {
                             return;
                         }
                         try {
                             BufferedImage newFrame = camera.getImage();
-                            Result r = BarcodeReader.readBarcode(newFrame);
-                            if (r != null) {
-                                notifyController(r);
-                                return;
+                            if (newFrame != null) {
+                                Result r = BarcodeReader.readBarcode(newFrame);
+                                if (r != null) {
+                                    notifyController(r);
+                                    return;
+                                }
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
-                            return;
                         }
                     }
                 }
@@ -99,17 +103,17 @@ public class BarcodeReader {
         }
     }
 
-    public void stop(){
-        barcodeThreadValid=null;
+    public void stop() {
+        barcodeThreadValid = null;
     }
-    
+
     public void setCamera(Camera camera) {
         stop();
         this.camera = camera;
     }
-    
-    private void notifyController(Result r){
-        if (controller!=null) {
+
+    private void notifyController(Result r) {
+        if (controller != null) {
             controller.setBarcodeResult(r);
         }
     }

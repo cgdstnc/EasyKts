@@ -12,7 +12,7 @@ import EasyKts.Common.FileSaver;
 import EasyKts.Model.Settings;
 import EasyKts.Model.Surat;
 import EasyKts.System.SettingFunctions;
-import EasyKts.View.EditablePanel;
+import EasyKts.System.projectEnum;
 import EasyKts.View.MainFrame;
 import com.google.zxing.Result;
 import java.awt.Dimension;
@@ -20,6 +20,9 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,15 +42,12 @@ public class MainFrameController {
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
     private MainFrame frame;
-    private EditablePanel editablePanel;
 
     private Camera camera;
     private FaceDetector faceDetector;
     private BarcodeReader barcodeReader;
 
     private boolean initState = true;
-    private boolean lockFoundFace = false;
-    private boolean lockFoundBarcode = false;
 
     private Surat currentSurat;
     private Result barcodeResult;
@@ -61,24 +61,36 @@ public class MainFrameController {
         this.frame = view;
 
         camera = new Camera(this);
-        faceDetector = new FaceDetector(camera, this);
-        barcodeReader = new BarcodeReader(camera, this);
+        projectEnum.mode mode = SettingFunctions.getSettings().getMode();
+        switch (mode) {
+            case BARCODE:
+                barcodeReader = new BarcodeReader(camera, this);
+                frame.jpFaceMainContainer.setVisible(false);
+                break;
+            case FACE:
+                faceDetector = new FaceDetector(camera, this);
+                frame.jpBarcodeContainer.setVisible(false);
+                break;
+            case BOTH:
+                faceDetector = new FaceDetector(camera, this);
+                barcodeReader = new BarcodeReader(camera, this);
+                break;
+            default:
+                faceDetector = new FaceDetector(camera, this);
+                barcodeReader = new BarcodeReader(camera, this);
+                break;
+        }
 
         DefaultComboBoxModel model = new DefaultComboBoxModel(camera.getWebcamNames());
         frame.jcbCams.setModel(model);
 
-        GridLayout gl = new GridLayout(0, 1);
-        frame.jpImage.setLayout(gl);
-
         frame.setLocationRelativeTo(null);
         frame.setTitle("Kimlik Tanıma Sistemi");
-        frame.jfManuel.setTitle("Kimlik Tanıma Sistemi");
         frame.jfSaveOnay.setTitle("Kimlik Tanıma Sistemi");
 
         try {
             ImageIcon img = new ImageIcon("resource/logo.png");
             frame.setIconImage(img.getImage());
-            frame.jfManuel.setIconImage(img.getImage());
             frame.jfSaveOnay.setIconImage(img.getImage());
 
         } catch (Exception e) {
@@ -91,7 +103,8 @@ public class MainFrameController {
             public void run() {
                 int changedCamIndex = camera.changeCam(SettingFunctions.getSettings().getDefaultCamera());
                 frame.jcbCams.setSelectedIndex(changedCamIndex);
-                reset();
+                resetFace(true);
+                resetBarcode(true);
             }
         }).start();
 
@@ -103,12 +116,8 @@ public class MainFrameController {
         frame.jcbCams.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                if (initState) {
-//                    initState = false;
-//                    return;
-//                }
                 camera.changeCam(frame.jcbCams.getSelectedIndex());
-                Settings s = new Settings();
+                Settings s = SettingFunctions.getSettings();
                 s.setDefaultCamera(frame.jcbCams.getSelectedItem().toString());
                 SettingFunctions.setSettings(s);
 
@@ -134,54 +143,11 @@ public class MainFrameController {
             }
         });
 
-        //Kimlik bölümündeki save button
-        frame.jbKimlikSave.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.jbKimlikSave.setEnabled(false);
-                faceDetector.stop();
-                lockFoundFace = true;
-            }
-        });
-
         //Kimlik bölümündeki reset
         frame.jbKimlikReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.jbKimlikSave.setEnabled(true);
-                lockFoundFace = false;
-                reset();
-            }
-        });
-
-        //Kimlik bölümündeki manuel
-        frame.jbKimlikManuel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                lockFoundFace = true;
-                faceDetector.stop();
-                reset();
-
-                BufferedImage anlik = camera.getImage();
-                editablePanel = new EditablePanel(anlik);
-                frame.jpImage.removeAll();
-                frame.jpImage.add(editablePanel);
-                frame.jpImage.repaint();
-                frame.jfManuel.setSize(anlik.getWidth(), anlik.getHeight() + frame.jpManuelKaydet.getHeight());
-                frame.jfManuel.setVisible(true);
-            }
-        });
-
-        //Manuel yüz seçme frame indeki kaydet Buttonu
-        frame.jbManuelKaydet.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                faceDetector.stop();
-                lockFoundFace = true;
-                reset();
-                setSurat(new Surat(editablePanel.getCameraImage(), editablePanel.getSelectedArea(), editablePanel.getFaceX(), editablePanel.getFaceY()));
-                lockFoundFace = true;
-                frame.jbKimlikSave.setEnabled(false);
+                resetFace(true);
             }
         });
 
@@ -189,8 +155,7 @@ public class MainFrameController {
         frame.jbBarcodeReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                lockFoundBarcode = false;
-                reset();
+                resetBarcode(true);
             }
         });
 
@@ -198,10 +163,8 @@ public class MainFrameController {
         frame.jbResetAll.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.jbKimlikSave.setEnabled(true);
-                lockFoundBarcode = false;
-                lockFoundFace = false;
-                reset();
+                resetFace(true);
+                resetBarcode(true);
             }
         });
 
@@ -209,16 +172,23 @@ public class MainFrameController {
         frame.jbSaveAll.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                faceDetector.stop();
-                lockFoundFace = true;
-                barcodeReader.stop();
-                lockFoundBarcode=true;
-                
-                frame.jfSaveOnay.setSize((int) screenSize.width / 2, 165);
-                frame.jfSaveOnay.setLocationRelativeTo(null);
-                frame.jfSaveOnay.setVisible(true);
-                frame.jcbKaydetOnay.setSelected(false);
-                frame.jbSaveFinal.setEnabled(false);
+                if (SettingFunctions.getSettings().getKullaniciOnayIste()) {
+                    if (faceDetector != null) {
+                        faceDetector.stop();
+                    }
+                    if (barcodeReader != null) {
+                        barcodeReader.stop();
+                    }
+
+                    frame.jfSaveOnay.setSize((int) screenSize.width / 2, 165);
+                    frame.jfSaveOnay.setLocationRelativeTo(null);
+                    frame.jfSaveOnay.setVisible(true);
+                    frame.jcbKaydetOnay.setSelected(false);
+                    frame.jbSaveFinal.setEnabled(false);
+                } else {
+                    saveAll();
+                }
+
             }
         });
 
@@ -234,35 +204,7 @@ public class MainFrameController {
         frame.jbSaveFinal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                faceDetector.stop();
-                barcodeReader.stop();
-                boolean success = true;
-                if (currentSurat != null) {
-                    try {
-                        FileSaver.save(currentSurat.getSource(), true, "kimlik.jpg");
-                        FileSaver.save(currentSurat.getSurat(), false, "surat.jpg");
-                    } catch (Exception ex) {
-                        success = false;
-                        JOptionPane.showMessageDialog(null,
-                                "Kimlik fotoğrafları kaydı sırasında"
-                                + " bir hata ile karşılaşıldı!",
-                                "Hata", JOptionPane.ERROR_MESSAGE);
-
-                        LOGGER.log(Level.SEVERE, ex.toString(), ex);
-                    }
-                }
-                if (barcodeResult != null) {
-                    try {
-                        FileSaver.save(barcodeResult.getText(), "barcodeResult.txt");
-                        FileSaver.save(barcodeResult.getBarcodeFormat().toString(), "barcodeFormat.txt");
-                    } catch (Exception ex) {
-                        success = false;
-                        LOGGER.log(Level.SEVERE, ex.toString(), ex);
-                    }
-                }
-                if (success) {
-                    System.exit(0);
-                }
+                saveAll();
             }
         });
 
@@ -270,13 +212,119 @@ public class MainFrameController {
         frame.jbStartOver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.jbKimlikSave.setEnabled(true);
-                lockFoundBarcode = false;
-                lockFoundFace = false;
                 frame.jfSaveOnay.setVisible(false);
-                reset();
+                resetFace(true);
+                resetBarcode(true);
             }
         });
+
+        //Panel Mouse Listener
+        frame.jpCamera.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                camera.getWebcamPanel().mouseClicked(e);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (faceDetector != null) {
+                    if (initState) {
+                        faceDetector.stop();
+                        resetFace(false);
+                    }
+                }
+                camera.getWebcamPanel().mousePressed(e);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (faceDetector != null) {
+                    faceDetector.stop();
+                    resetFace(false);
+                    camera.getWebcamPanel().mouseReleased(e);
+                }
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                camera.getWebcamPanel().mouseEntered(e);
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                camera.getWebcamPanel().mouseExited(e);
+            }
+        });
+
+        frame.jpCamera.addMouseMotionListener(new MouseMotionListener() {
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                camera.getWebcamPanel().mouseDragged(e);
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                camera.getWebcamPanel().mouseMoved(e);
+            }
+        });
+
+    }
+
+    public void saveAll() {
+        if (faceDetector != null) {
+            faceDetector.stop();
+        }
+        if (barcodeReader != null) {
+            barcodeReader.stop();
+        }
+        boolean success = true;
+        if (currentSurat != null) {
+            try {
+                FileSaver.save(currentSurat.getSource(), true, "kimlik.jpg");
+                FileSaver.save(currentSurat.getSurat(), false, "surat.jpg");
+            } catch (Exception ex) {
+                success = false;
+                JOptionPane.showMessageDialog(null,
+                        "Kimlik fotoğrafları kaydı sırasında"
+                        + " bir hata ile karşılaşıldı!",
+                        "Hata", JOptionPane.ERROR_MESSAGE);
+
+                LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            }
+        }
+        if (barcodeResult != null) {
+            if (SettingFunctions.getSettings().getBarcodeSaveMode().equals(projectEnum.BarcodeSaveFormat.json)) {
+                try {
+                    FileSaver.saveJson(barcodeResult, "barcodeResult.json");
+                } catch (Exception ex) {
+                    success = false;
+                    JOptionPane.showMessageDialog(null,
+                            "Barkod bilgisi kaydı sırasında"
+                            + " bir hata ile karşılaşıldı!",
+                            "Hata", JOptionPane.ERROR_MESSAGE);
+                    LOGGER.log(Level.SEVERE, ex.toString(), ex);
+                }
+            } else {
+                try {
+                    FileSaver.save(barcodeResult.getText(), "barcodeResult.txt");
+                    FileSaver.save(barcodeResult.getBarcodeFormat().toString(), "barcodeFormat.txt");
+                } catch (Exception ex) {
+                    success = false;
+                    JOptionPane.showMessageDialog(null,
+                            "Barkod bilgisi kaydı sırasında"
+                            + " bir hata ile karşılaşıldı!",
+                            "Hata", JOptionPane.ERROR_MESSAGE);
+                    LOGGER.log(Level.SEVERE, ex.toString(), ex);
+                }
+            }
+        }
+        if (success) {
+            if (SettingFunctions.getSettings().getExitOnSave()) {
+                System.exit(0);
+            }
+        }
     }
 
     public void setSurat(Surat surat) {
@@ -294,37 +342,43 @@ public class MainFrameController {
     }
 
     public void setBarcodeResult(Result result) {
-        lockFoundBarcode = true;
         this.barcodeResult = result;
         frame.jlBarcodeText.setText(result.getText());
         frame.jlBarcodeOkunan.setText(result.getText());
     }
 
-    public void reset() {
-        frame.jpCamera.revalidate();
-        frame.jpCamera.repaint();
-        if (!lockFoundFace) {
-            currentSurat = null;
-
-            frame.jlFace.setIcon(null);
-            frame.jlFace.revalidate();
-            frame.jlFace.repaint();
-
-            frame.jlFaceOnay.setIcon(null);
-            frame.jlFaceOnay.revalidate();
-            frame.jlFaceOnay.repaint();
-
-            frame.jlKimlikOnay.setIcon(null);
-            frame.jlKimlikOnay.revalidate();
-            frame.jlKimlikOnay.repaint();
-
-            faceDetector.startFaceDetectionThread(15000L);
-        }
-        if (!lockFoundBarcode) {
-            barcodeResult = null;
-            frame.jlBarcodeText.setText("...");
-            frame.jlBarcodeOkunan.setText("Okunamadı!");
-            barcodeReader.startBarcodeThread(15000L);
+    public void resetBarcode(boolean scan) {
+        barcodeResult = null;
+        frame.jlBarcodeText.setText("...");
+        frame.jlBarcodeOkunan.setText("Okunamadı!");
+        if (scan) {
+            if (barcodeReader != null) {
+                barcodeReader.startBarcodeThread(915000L);
+            }
         }
     }
+
+    public void resetFace(boolean scan) {
+        if (faceDetector == null) {
+            return;
+        }
+        currentSurat = null;
+
+        frame.jlFace.setIcon(null);
+        frame.jlFace.revalidate();
+        frame.jlFace.repaint();
+
+        frame.jlFaceOnay.setIcon(null);
+        frame.jlFaceOnay.revalidate();
+        frame.jlFaceOnay.repaint();
+
+        frame.jlKimlikOnay.setIcon(null);
+        frame.jlKimlikOnay.revalidate();
+        frame.jlKimlikOnay.repaint();
+
+        if (scan) {
+            faceDetector.startFaceDetectionThread(915000L);
+        }
+    }
+
 }

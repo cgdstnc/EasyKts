@@ -11,12 +11,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.logging.Level;
 
 /**
  *
  * @author Administrator
  */
 public class SettingFunctions {
+
+    private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(SettingFunctions.class.getName());
+
     private static Settings settings;
 
     public static Settings getSettings() {
@@ -30,14 +34,14 @@ public class SettingFunctions {
                     setSettings(settings);
                 } catch (Exception e) {
                     System.out.println("setSettings Hata");
-                    e.printStackTrace();
+                    LOGGER.log(Level.SEVERE, e.toString(), e);
                 }
 
             } else {
                 try {
                     settings = new Gson().fromJson(new BufferedReader(new FileReader(saved)), Settings.class);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    LOGGER.log(Level.SEVERE, e.toString(), e);
                 }
             }
         }
@@ -47,7 +51,13 @@ public class SettingFunctions {
     private static Settings getDefaultSettings() {
         Settings settings = new Settings();
         settings.setDefaultCamera("not yet set!");
-
+        settings.setKullaniciOnayIste(false);
+        settings.setOutputFolderName("KimlikOutput");
+        settings.setMode(projectEnum.mode.BOTH);
+        settings.setResetBarcodeOnMotion(false);
+        settings.setResetFaceOnMotion(false);
+        settings.setBarcodeSaveMode(projectEnum.BarcodeSaveFormat.json);
+        settings.setExitOnSave(true);
         return settings;
     }
 
@@ -63,10 +73,10 @@ public class SettingFunctions {
                 fileWriter.flush();
                 fileWriter.close();
             } catch (Exception e) {
-                e.printStackTrace();
+                LOGGER.log(Level.SEVERE, e.toString(), e);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, e.toString(), e);
         }
     }
 }

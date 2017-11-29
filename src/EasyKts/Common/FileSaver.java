@@ -5,6 +5,8 @@
  */
 package EasyKts.Common;
 
+import EasyKts.System.SettingFunctions;
+import com.google.gson.Gson;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -12,6 +14,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
 import javax.imageio.ImageIO;
 
 /**
@@ -19,6 +22,8 @@ import javax.imageio.ImageIO;
  * @author Administrator
  */
 public class FileSaver {
+
+    private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(FileSaver.class.getName());
 
     private static BufferedImage cloneBufferedImage(BufferedImage img) {
         BufferedImage clone = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -29,7 +34,8 @@ public class FileSaver {
     }
 
     public static void save(BufferedImage img, boolean addWatermark, String fileName) throws IOException {
-        File folder = new File("KimlikOutput");
+
+        File folder = new File(SettingFunctions.getSettings().getOutputFolderName());
         folder.mkdirs();
         File f = new File(folder.getAbsolutePath() + "\\" + fileName);
 
@@ -48,13 +54,31 @@ public class FileSaver {
     }
 
     public static void save(String text, String file) throws IOException {
-        File folder = new File("KimlikOutput");
+        File folder = new File(SettingFunctions.getSettings().getOutputFolderName());
         folder.mkdirs();
         File f = new File(folder.getAbsolutePath() + "\\" + file);
         FileWriter fileWriter = new FileWriter(f);
         fileWriter.append(text);
         fileWriter.flush();
         fileWriter.close();
+    }
+
+    public static void saveJson(Object obj, String file) throws IOException {
+        File folder = new File(SettingFunctions.getSettings().getOutputFolderName());
+        folder.mkdirs();
+        File f = new File(folder.getAbsolutePath() + "\\" + file);
+
+        String tmp = new Gson().toJson(obj);
+        tmp = tmp.replaceAll("\\{", "{\n");
+        tmp = tmp.replaceAll("\\}", "}{\n");
+
+        tmp = tmp.replaceAll(",", ",\n");
+
+        FileWriter fileWriter = new FileWriter(f);
+        fileWriter.write(tmp);
+        fileWriter.flush();
+        fileWriter.close();
+
     }
 
 }

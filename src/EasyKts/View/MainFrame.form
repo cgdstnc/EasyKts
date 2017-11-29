@@ -2,87 +2,6 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Container class="javax.swing.JFrame" name="jfManuel">
-      <Properties>
-        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[700, 150]"/>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jpImage" alignment="0" max="32767" attributes="0"/>
-              <Component id="jpManuelKaydet" alignment="0" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jpImage" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                  <Component id="jpManuelKaydet" min="-2" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Container class="javax.swing.JPanel" name="jpImage">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                <EtchetBorder/>
-              </Border>
-            </Property>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="346" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="268" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jpManuelKaydet">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                <EtchetBorder/>
-              </Border>
-            </Property>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jbManuelKaydet" alignment="0" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jbManuelKaydet" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JButton" name="jbManuelKaydet">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Kaydet"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-      </SubComponents>
-    </Container>
     <Container class="javax.swing.JFrame" name="jfSaveOnay">
 
       <Layout>
@@ -385,7 +304,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jpFaceMainContainer" max="32767" attributes="0"/>
-                      <Component id="jpTC" max="32767" attributes="0"/>
+                      <Component id="jpBarcodeContainer" max="32767" attributes="0"/>
                       <Component id="jpSaveAll" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -397,7 +316,7 @@
               <Group type="102" attributes="0">
                   <Component id="jpFaceMainContainer" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jpTC" min="-2" max="-2" attributes="0"/>
+                  <Component id="jpBarcodeContainer" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jpSaveAll" max="32767" attributes="0"/>
               </Group>
@@ -466,9 +385,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jbKimlikSave" alignment="0" max="32767" attributes="0"/>
                   <Component id="jbKimlikReset" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jbKimlikManuel" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -486,11 +403,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jpFace" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jbKimlikSave" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jbKimlikReset" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jbKimlikManuel" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -540,19 +453,9 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jbKimlikSave">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Kaydet"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="jbKimlikReset">
               <Properties>
-                <Property name="text" type="java.lang.String" value="S&#x131;f&#x131;rla"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jbKimlikManuel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Manuel"/>
+                <Property name="text" type="java.lang.String" value="Tekrar Al"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
@@ -568,7 +471,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jpTC">
+        <Container class="javax.swing.JPanel" name="jpBarcodeContainer">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -668,12 +571,12 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="jbSaveAll">
               <Properties>
-                <Property name="text" type="java.lang.String" value="T&#xfc;m&#xfc;n&#xfc; Kaydet"/>
+                <Property name="text" type="java.lang.String" value="Kaydet"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jbResetAll">
               <Properties>
-                <Property name="text" type="java.lang.String" value="T&#xfc;m&#xfc;n&#xfc; S&#x131;f&#x131;rla"/>
+                <Property name="text" type="java.lang.String" value="S&#x131;f&#x131;rla"/>
               </Properties>
             </Component>
           </SubComponents>
