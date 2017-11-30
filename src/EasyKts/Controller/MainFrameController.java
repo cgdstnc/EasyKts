@@ -92,7 +92,6 @@ public class MainFrameController {
             ImageIcon img = new ImageIcon("resource/logo.png");
             frame.setIconImage(img.getImage());
             frame.jfSaveOnay.setIconImage(img.getImage());
-
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
         }
@@ -339,12 +338,16 @@ public class MainFrameController {
         frame.jlFaceOnay.repaint();
         frame.jlKimlikOnay.revalidate();
         frame.jlKimlikOnay.revalidate();
+        
+        checkAutoSave();
     }
 
     public void setBarcodeResult(Result result) {
         this.barcodeResult = result;
         frame.jlBarcodeText.setText(result.getText());
         frame.jlBarcodeOkunan.setText(result.getText());
+        
+        checkAutoSave();
     }
 
     public void resetBarcode(boolean scan) {
@@ -381,4 +384,17 @@ public class MainFrameController {
         }
     }
 
+    public void setLastMotion(long l) {
+        if (faceDetector != null) {
+            faceDetector.setLastMove(l);
+        }
+    }
+
+    public void checkAutoSave() {
+        if (SettingFunctions.getSettings().getAutoSave()) {
+            if ((barcodeResult != null) && (currentSurat != null)) {
+                saveAll();
+            }
+        }
+    }
 }

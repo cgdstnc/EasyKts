@@ -63,7 +63,8 @@ public class run {
                     + " -mode=\"face\"|\"barcode\"|\"both\" \n"
                     + " -outputFolderName=\"KimlikOutput\" \n"
                     + " -barcodeSaveMode=\"simple\"|\"json\"  \n"
-                    + " -exitOnSave=true|false  \n",
+                    + " -exitOnSave=true|false  \n"
+                    + " -autoSave=true|false  \n",
                     "Info", JOptionPane.INFORMATION_MESSAGE);
         }
 
@@ -179,6 +180,15 @@ public class run {
         if (getArgOption("-exitOnSave", args) != null) {
             try {
                 s.setExitOnSave(Boolean.valueOf(getArgOption("-exitOnSave", args)));
+                SettingFunctions.setSettings(s);
+            } catch (Exception e) {
+                LOGGER.log(Level.SEVERE, e.toString(), e);
+            }
+        }
+        
+        if (getArgOption("-autoSave", args) != null) {
+            try {
+                s.setAutoSave(Boolean.valueOf(getArgOption("-autoSave", args)));
                 SettingFunctions.setSettings(s);
             } catch (Exception e) {
                 LOGGER.log(Level.SEVERE, e.toString(), e);

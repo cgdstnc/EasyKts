@@ -139,6 +139,9 @@ public class Camera implements WebcamMotionListener {
     @Override
     public void motionDetected(WebcamMotionEvent wme) {
         LOGGER.log(Level.INFO,"Hareket algilandi.",wme);
+        
+        controller.setLastMotion(System.currentTimeMillis());
+        
         if (SettingFunctions.getSettings().getResetBarcodeOnMotion()) {
             controller.resetBarcode(true);
         }

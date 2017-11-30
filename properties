@@ -1,0 +1,9 @@
+{"defaultCamera":"USB2.0 Camera 0",
+"kullaniciOnayIste":false,
+"resetFaceOnMotion":false,
+"resetBarcodeOnMotion":false,
+"outputFolderName":"KimlikOutput",
+"mode":"BOTH",
+"exitOnSave":true,
+"barcodeSaveMode":"json",
+"autoSave":false}

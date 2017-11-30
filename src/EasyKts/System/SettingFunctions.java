@@ -58,6 +58,7 @@ public class SettingFunctions {
         settings.setResetFaceOnMotion(false);
         settings.setBarcodeSaveMode(projectEnum.BarcodeSaveFormat.json);
         settings.setExitOnSave(true);
+        settings.setAutoSave(false);
         return settings;
     }
 

@@ -37,6 +37,8 @@ public class FaceDetector {
     private Camera camera;
     private MainFrameController controller;
 
+    private long lastMove;
+
     public FaceDetector(Camera camera, MainFrameController controller) {
         this.camera = camera;
         this.controller = controller;
@@ -91,13 +93,17 @@ public class FaceDetector {
                                 }
 
                                 notifyController(new Surat(newFrame, buf, x, y));
-                                System.out.println("i:" + i);
-
-                                i++;
-                                if (i > 2) {
-                                    valid=-1;
+//                                System.out.println("i:" + i);
+//
+//                                i++;
+//                                if (i > 2) {
+//                                    valid = -1;
+//                                    return;
+////                                    break;//ilk koyarken yuzu bulunca hemen cikmasin bulaniklik azalsin
+//                                }
+                                System.out.println(lastMove+"-"+System.currentTimeMillis());
+                                if ((lastMove + 1500) < System.currentTimeMillis()) {
                                     return;
-//                                    break;//ilk koyarken yuzu bulunca hemen cikmasin bulaniklik azalsin
                                 }
                             }
                         } catch (Exception e) {
@@ -128,4 +134,11 @@ public class FaceDetector {
         this.camera = camera;
     }
 
+    public long getLastMove() {
+        return lastMove;
+    }
+
+    public void setLastMove(long lastMove) {
+        this.lastMove = lastMove;
+    }
 }

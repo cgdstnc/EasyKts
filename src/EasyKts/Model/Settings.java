@@ -21,7 +21,8 @@ public class Settings {
     private projectEnum.mode mode;
     private Boolean exitOnSave;
     private projectEnum.BarcodeSaveFormat barcodeSaveMode;
-
+    private Boolean autoSave;
+    
     public Boolean getKullaniciOnayIste() {
         return (kullaniciOnayIste != null) ? kullaniciOnayIste : false;
     }
@@ -86,8 +87,16 @@ public class Settings {
         this.barcodeSaveMode = barcodeSaveMode;
     }
 
+    public Boolean getAutoSave() {
+        return autoSave;
+    }
+
+    public void setAutoSave(Boolean autoSaveAndExit) {
+        this.autoSave = autoSaveAndExit;
+    }
+
     @Override
     public String toString() {
-        return "Settings{" + "defaultCamera=" + defaultCamera + ", kullaniciOnayIste=" + kullaniciOnayIste + ", resetFaceOnMotion=" + resetFaceOnMotion + ", resetBarcodeOnMotion=" + resetBarcodeOnMotion + ", outputFolderName=" + outputFolderName + ", mode=" + mode + ", exitOnSave=" + exitOnSave + ", barcodeSaveMode=" + barcodeSaveMode + '}';
+        return "Settings{" + "defaultCamera=" + defaultCamera + ", kullaniciOnayIste=" + kullaniciOnayIste + ", resetFaceOnMotion=" + resetFaceOnMotion + ", resetBarcodeOnMotion=" + resetBarcodeOnMotion + ", outputFolderName=" + outputFolderName + ", mode=" + mode + ", exitOnSave=" + exitOnSave + ", barcodeSaveMode=" + barcodeSaveMode + ", autoSaveAndExit=" + autoSave + '}';
     }
 }
