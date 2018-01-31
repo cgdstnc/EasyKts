@@ -1,5 +1,5 @@
 {"defaultCamera":"1.3M WebCam 0",
-"kullaniciOnayIste":false,
+"kullaniciOnayIste":true,
 "resetFaceOnMotion":false,
 "resetBarcodeOnMotion":false,
 "outputFolderName":"KimlikOutput",

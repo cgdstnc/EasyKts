@@ -22,7 +22,9 @@ public class Settings {
     private Boolean exitOnSave;
     private projectEnum.BarcodeSaveFormat barcodeSaveMode;
     private Boolean autoSave;
-    
+    private Boolean userCanChangeSettings;
+    private Boolean firstRun;
+
     public Boolean getKullaniciOnayIste() {
         return (kullaniciOnayIste != null) ? kullaniciOnayIste : false;
     }
@@ -95,8 +97,24 @@ public class Settings {
         this.autoSave = autoSaveAndExit;
     }
 
+    public Boolean getUserCanChangeSettings() {
+        return (userCanChangeSettings != null) ? userCanChangeSettings : false;
+    }
+
+    public void setUserCanChangeSettings(Boolean userCanChangeSettings) {
+        this.userCanChangeSettings = userCanChangeSettings;
+    }
+
+    public Boolean getFirstRun() {
+        return (firstRun != null) ? firstRun : false;
+    }
+
+    public void setFirstRun(Boolean firstRun) {
+        this.firstRun = firstRun;
+    }
+
     @Override
     public String toString() {
-        return "Settings{" + "defaultCamera=" + defaultCamera + ", kullaniciOnayIste=" + kullaniciOnayIste + ", resetFaceOnMotion=" + resetFaceOnMotion + ", resetBarcodeOnMotion=" + resetBarcodeOnMotion + ", outputFolderName=" + outputFolderName + ", mode=" + mode + ", exitOnSave=" + exitOnSave + ", barcodeSaveMode=" + barcodeSaveMode + ", autoSaveAndExit=" + autoSave + '}';
+        return "Settings{" + "defaultCamera=" + defaultCamera + ", kullaniciOnayIste=" + kullaniciOnayIste + ", resetFaceOnMotion=" + resetFaceOnMotion + ", resetBarcodeOnMotion=" + resetBarcodeOnMotion + ", outputFolderName=" + outputFolderName + ", mode=" + mode + ", exitOnSave=" + exitOnSave + ", barcodeSaveMode=" + barcodeSaveMode + ", autoSave=" + autoSave + ", userCanChangeSettings=" + userCanChangeSettings + ", firstRun=" + firstRun + '}';
     }
 }

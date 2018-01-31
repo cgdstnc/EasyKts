@@ -41,8 +41,29 @@ public class MainFrame extends javax.swing.JFrame {
         jbSaveFinal = new javax.swing.JButton();
         jbStartOver = new javax.swing.JButton();
         jcbKaydetOnay = new javax.swing.JCheckBox();
+        jfSettings = new javax.swing.JFrame();
+        jpSettings1 = new javax.swing.JPanel();
+        jcbKullanicidanOnayIste = new javax.swing.JCheckBox();
+        jcbResetFaceOnMotion = new javax.swing.JCheckBox();
+        jcbResetBarcodeOnMotion = new javax.swing.JCheckBox();
+        jcbExitOnSave = new javax.swing.JCheckBox();
+        jcbAutoSave = new javax.swing.JCheckBox();
+        jcbUserCanChangeSettings = new javax.swing.JCheckBox();
+        jpSettings2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jrbBarcodeFormatSimple = new javax.swing.JRadioButton();
+        jrbBarcodeFormatJSON = new javax.swing.JRadioButton();
+        jpSettings3 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jrbModeFaceOnly = new javax.swing.JRadioButton();
+        jrbModeBarcodeOnly = new javax.swing.JRadioButton();
+        jrbModeBoth = new javax.swing.JRadioButton();
+        jbSettingsSave = new javax.swing.JButton();
+        bgBarcodeFormat = new javax.swing.ButtonGroup();
+        bgMode = new javax.swing.ButtonGroup();
         jpSelectCam = new javax.swing.JPanel();
         jcbCams = new javax.swing.JComboBox<String>();
+        jbSettings = new javax.swing.JButton();
         jpMain = new javax.swing.JPanel();
         jpCamera = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -169,23 +190,187 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jpSettings1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jcbKullanicidanOnayIste.setText("Kaydederken kullanıcıdan doğrulama iste");
+
+        jcbResetFaceOnMotion.setText("Hareket halinde bulunan yüzü sıfırla");
+
+        jcbResetBarcodeOnMotion.setText("Hareket halinde bulunan barkodu sıfırla");
+
+        jcbExitOnSave.setText("Kaydetme sonrası çıkış yap");
+
+        jcbAutoSave.setText("Otomatik kaydet");
+
+        jcbUserCanChangeSettings.setText("Ayarlara sonradan erişim");
+
+        javax.swing.GroupLayout jpSettings1Layout = new javax.swing.GroupLayout(jpSettings1);
+        jpSettings1.setLayout(jpSettings1Layout);
+        jpSettings1Layout.setHorizontalGroup(
+            jpSettings1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpSettings1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpSettings1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcbResetBarcodeOnMotion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jpSettings1Layout.createSequentialGroup()
+                        .addGroup(jpSettings1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcbKullanicidanOnayIste)
+                            .addComponent(jcbResetFaceOnMotion)
+                            .addComponent(jcbExitOnSave)
+                            .addComponent(jcbAutoSave)
+                            .addComponent(jcbUserCanChangeSettings))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jpSettings1Layout.setVerticalGroup(
+            jpSettings1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpSettings1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jcbKullanicidanOnayIste)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jcbResetFaceOnMotion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jcbResetBarcodeOnMotion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jcbExitOnSave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jcbAutoSave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jcbUserCanChangeSettings)
+                .addGap(10, 10, 10))
+        );
+
+        jpSettings2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel5.setText("Barkodları şu formatta kaydet");
+
+        bgBarcodeFormat.add(jrbBarcodeFormatSimple);
+        jrbBarcodeFormatSimple.setSelected(true);
+        jrbBarcodeFormatSimple.setText("Basit");
+
+        bgBarcodeFormat.add(jrbBarcodeFormatJSON);
+        jrbBarcodeFormatJSON.setText("JSON");
+
+        javax.swing.GroupLayout jpSettings2Layout = new javax.swing.GroupLayout(jpSettings2);
+        jpSettings2.setLayout(jpSettings2Layout);
+        jpSettings2Layout.setHorizontalGroup(
+            jpSettings2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpSettings2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(79, 79, 79))
+            .addGroup(jpSettings2Layout.createSequentialGroup()
+                .addComponent(jrbBarcodeFormatSimple, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jrbBarcodeFormatJSON, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(129, 129, 129))
+        );
+        jpSettings2Layout.setVerticalGroup(
+            jpSettings2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpSettings2Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpSettings2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbBarcodeFormatSimple)
+                    .addComponent(jrbBarcodeFormatJSON))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpSettings3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel6.setText("Çalışma modu");
+
+        bgMode.add(jrbModeFaceOnly);
+        jrbModeFaceOnly.setText("Yanlızca Yüz");
+
+        bgMode.add(jrbModeBarcodeOnly);
+        jrbModeBarcodeOnly.setText("Yanlızca Barkod");
+
+        bgMode.add(jrbModeBoth);
+        jrbModeBoth.setSelected(true);
+        jrbModeBoth.setText("Yüz ve Barkod");
+
+        javax.swing.GroupLayout jpSettings3Layout = new javax.swing.GroupLayout(jpSettings3);
+        jpSettings3.setLayout(jpSettings3Layout);
+        jpSettings3Layout.setHorizontalGroup(
+            jpSettings3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpSettings3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jpSettings3Layout.createSequentialGroup()
+                .addGroup(jpSettings3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jrbModeFaceOnly)
+                    .addComponent(jrbModeBarcodeOnly)
+                    .addComponent(jrbModeBoth))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jpSettings3Layout.setVerticalGroup(
+            jpSettings3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpSettings3Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jrbModeFaceOnly)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbModeBarcodeOnly)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jrbModeBoth)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jbSettingsSave.setText("Kaydet");
+
+        javax.swing.GroupLayout jfSettingsLayout = new javax.swing.GroupLayout(jfSettings.getContentPane());
+        jfSettings.getContentPane().setLayout(jfSettingsLayout);
+        jfSettingsLayout.setHorizontalGroup(
+            jfSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jfSettingsLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(jfSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpSettings2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpSettings1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpSettings3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbSettingsSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
+        );
+        jfSettingsLayout.setVerticalGroup(
+            jfSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jfSettingsLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jpSettings1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpSettings2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpSettings3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbSettingsSave, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jpSelectCam.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jcbCams.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lütfen Bekleyiniz" }));
 
+        jbSettings.setText("Ayar");
+
         javax.swing.GroupLayout jpSelectCamLayout = new javax.swing.GroupLayout(jpSelectCam);
         jpSelectCam.setLayout(jpSelectCamLayout);
         jpSelectCamLayout.setHorizontalGroup(
             jpSelectCamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpSelectCamLayout.createSequentialGroup()
-                .addComponent(jcbCams, 0, 400, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(jcbCams, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jbSettings))
         );
         jpSelectCamLayout.setVerticalGroup(
             jpSelectCamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jcbCams, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jpSelectCamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jcbCams, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbSettings))
         );
 
         jpMain.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -205,7 +390,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jpCameraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         jpCameraLayout.setVerticalGroup(
             jpCameraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,19 +586,32 @@ public class MainFrame extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.ButtonGroup bgBarcodeFormat;
+    public javax.swing.ButtonGroup bgMode;
     public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel jLabel6;
     public javax.swing.JButton jbBarcodeReset;
     public javax.swing.JButton jbKimlikReset;
     public javax.swing.JButton jbResetAll;
     public javax.swing.JButton jbSaveAll;
     public javax.swing.JButton jbSaveFinal;
+    public javax.swing.JButton jbSettings;
+    public javax.swing.JButton jbSettingsSave;
     public javax.swing.JButton jbStartOver;
+    public javax.swing.JCheckBox jcbAutoSave;
     public javax.swing.JComboBox<String> jcbCams;
+    public javax.swing.JCheckBox jcbExitOnSave;
     public javax.swing.JCheckBox jcbKaydetOnay;
+    public javax.swing.JCheckBox jcbKullanicidanOnayIste;
+    public javax.swing.JCheckBox jcbResetBarcodeOnMotion;
+    public javax.swing.JCheckBox jcbResetFaceOnMotion;
+    public javax.swing.JCheckBox jcbUserCanChangeSettings;
     public javax.swing.JFrame jfSaveOnay;
+    public javax.swing.JFrame jfSettings;
     public javax.swing.JLabel jlBarcodeOkunan;
     public javax.swing.JLabel jlBarcodeText;
     public javax.swing.JLabel jlFace;
@@ -429,5 +627,13 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JPanel jpMain;
     public javax.swing.JPanel jpSaveAll;
     public javax.swing.JPanel jpSelectCam;
+    public javax.swing.JPanel jpSettings1;
+    public javax.swing.JPanel jpSettings2;
+    public javax.swing.JPanel jpSettings3;
+    public javax.swing.JRadioButton jrbBarcodeFormatJSON;
+    public javax.swing.JRadioButton jrbBarcodeFormatSimple;
+    public javax.swing.JRadioButton jrbModeBarcodeOnly;
+    public javax.swing.JRadioButton jrbModeBoth;
+    public javax.swing.JRadioButton jrbModeFaceOnly;
     // End of variables declaration//GEN-END:variables
 }

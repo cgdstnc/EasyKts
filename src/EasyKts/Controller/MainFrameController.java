@@ -56,7 +56,13 @@ public class MainFrameController {
         MainFrame view = new MainFrame();
         view.setLocationRelativeTo(null);
         view.setSize((int) screenSize.width / 3, (int) (screenSize.height / 5) * 4);
-        view.setVisible(true);
+        view.jfSettings.setSize((int) screenSize.width / 3, (int) (screenSize.height / 5) * 3);
+        view.jfSettings.setLocationRelativeTo(null);
+
+        view.jbSettings.setVisible(SettingFunctions.getSettings().getUserCanChangeSettings());
+        Boolean isFirstRun = SettingFunctions.getSettings().getFirstRun();
+        view.jfSettings.setVisible(isFirstRun);
+        view.setVisible(!isFirstRun);
 
         this.frame = view;
 
@@ -204,6 +210,7 @@ public class MainFrameController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 saveAll();
+                frame.jfSaveOnay.setVisible(false);
             }
         });
 
@@ -269,6 +276,41 @@ public class MainFrameController {
             }
         });
 
+        frame.jbSettings.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.jfSettings.setVisible(true);
+            }
+        });
+
+        frame.jbSettingsSave.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Settings newSettings = SettingFunctions.getSettings();
+                newSettings.setKullaniciOnayIste(frame.jcbKullanicidanOnayIste.isSelected());
+                newSettings.setResetFaceOnMotion(frame.jcbResetFaceOnMotion.isSelected());
+                newSettings.setResetBarcodeOnMotion(frame.jcbResetBarcodeOnMotion.isSelected());
+                newSettings.setExitOnSave(frame.jcbExitOnSave.isSelected());
+                newSettings.setAutoSave(frame.jcbAutoSave.isSelected());
+                newSettings.setUserCanChangeSettings(frame.jcbUserCanChangeSettings.isSelected());
+
+                projectEnum.BarcodeSaveFormat format = frame.jrbBarcodeFormatJSON.isSelected() ? projectEnum.BarcodeSaveFormat.json : projectEnum.BarcodeSaveFormat.simple;
+                newSettings.setBarcodeSaveMode(format);
+
+                projectEnum.mode mode = null;
+                mode = frame.jrbModeBoth.isSelected() ? projectEnum.mode.BOTH : mode;
+                mode = frame.jrbModeFaceOnly.isSelected() ? projectEnum.mode.FACE : mode;
+                mode = frame.jrbModeBarcodeOnly.isSelected() ? projectEnum.mode.BARCODE : mode;
+
+                newSettings.setMode(mode);
+                newSettings.setFirstRun(false);
+                
+                SettingFunctions.setSettings(newSettings);
+                JOptionPane.showMessageDialog(frame, "Ayarlarınız kaydedildi.Etkili olması için lütfen yeniden başlatın.");
+                System.exit(0);
+            }
+        });
     }
 
     public void saveAll() {
@@ -338,7 +380,7 @@ public class MainFrameController {
         frame.jlFaceOnay.repaint();
         frame.jlKimlikOnay.revalidate();
         frame.jlKimlikOnay.revalidate();
-        
+
         checkAutoSave();
     }
 
@@ -346,7 +388,7 @@ public class MainFrameController {
         this.barcodeResult = result;
         frame.jlBarcodeText.setText(result.getText());
         frame.jlBarcodeOkunan.setText(result.getText());
-        
+
         checkAutoSave();
     }
 

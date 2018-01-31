@@ -59,6 +59,8 @@ public class SettingFunctions {
         settings.setBarcodeSaveMode(projectEnum.BarcodeSaveFormat.json);
         settings.setExitOnSave(true);
         settings.setAutoSave(false);
+        settings.setFirstRun(true);
+        settings.setUserCanChangeSettings(false);
         return settings;
     }
 
