@@ -49,6 +49,7 @@ public class MainFrame extends javax.swing.JFrame {
         jcbExitOnSave = new javax.swing.JCheckBox();
         jcbAutoSave = new javax.swing.JCheckBox();
         jcbUserCanChangeSettings = new javax.swing.JCheckBox();
+        jcbSound = new javax.swing.JCheckBox();
         jpSettings2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jrbBarcodeFormatSimple = new javax.swing.JRadioButton();
@@ -59,6 +60,10 @@ public class MainFrame extends javax.swing.JFrame {
         jrbModeBarcodeOnly = new javax.swing.JRadioButton();
         jrbModeBoth = new javax.swing.JRadioButton();
         jbSettingsSave = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jtfSaveLocation = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jbSaveLocationButton = new javax.swing.JButton();
         bgBarcodeFormat = new javax.swing.ButtonGroup();
         bgMode = new javax.swing.ButtonGroup();
         jpSelectCam = new javax.swing.JPanel();
@@ -72,10 +77,12 @@ public class MainFrame extends javax.swing.JFrame {
         jlFace = new javax.swing.JLabel();
         jbKimlikReset = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jlGifFace = new javax.swing.JLabel();
         jpBarcodeContainer = new javax.swing.JPanel();
         jlBarcodeText = new javax.swing.JLabel();
         jbBarcodeReset = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jlGifBarcode = new javax.swing.JLabel();
         jpSaveAll = new javax.swing.JPanel();
         jbSaveAll = new javax.swing.JButton();
         jbResetAll = new javax.swing.JButton();
@@ -204,6 +211,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         jcbUserCanChangeSettings.setText("Ayarlara sonradan erişim");
 
+        jcbSound.setSelected(true);
+        jcbSound.setText("Sonuç bulduğunda ses çıkart");
+
         javax.swing.GroupLayout jpSettings1Layout = new javax.swing.GroupLayout(jpSettings1);
         jpSettings1.setLayout(jpSettings1Layout);
         jpSettings1Layout.setHorizontalGroup(
@@ -218,9 +228,9 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(jcbResetFaceOnMotion)
                             .addComponent(jcbExitOnSave)
                             .addComponent(jcbAutoSave)
-                            .addComponent(jcbUserCanChangeSettings))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jcbUserCanChangeSettings)
+                            .addComponent(jcbSound))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jpSettings1Layout.setVerticalGroup(
             jpSettings1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,7 +247,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jcbAutoSave)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jcbUserCanChangeSettings)
-                .addGap(10, 10, 10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jcbSound)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpSettings2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -257,7 +269,7 @@ public class MainFrame extends javax.swing.JFrame {
             jpSettings2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpSettings2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                 .addGap(79, 79, 79))
             .addGroup(jpSettings2Layout.createSequentialGroup()
                 .addComponent(jrbBarcodeFormatSimple, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -322,6 +334,36 @@ public class MainFrame extends javax.swing.JFrame {
 
         jbSettingsSave.setText("Kaydet");
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jtfSaveLocation.setEditable(false);
+
+        jLabel7.setText("Kayıt yeri:");
+
+        jbSaveLocationButton.setText("Değiştir");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jtfSaveLocation)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel7)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jbSaveLocationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtfSaveLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbSaveLocationButton, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jfSettingsLayout = new javax.swing.GroupLayout(jfSettings.getContentPane());
         jfSettings.getContentPane().setLayout(jfSettingsLayout);
         jfSettingsLayout.setHorizontalGroup(
@@ -329,23 +371,29 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jfSettingsLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jfSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpSettings2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpSettings1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpSettings3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbSettingsSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+                    .addComponent(jbSettingsSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jfSettingsLayout.createSequentialGroup()
+                        .addComponent(jpSettings1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jfSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpSettings3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jpSettings2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
         jfSettingsLayout.setVerticalGroup(
             jfSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jfSettingsLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jpSettings1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jfSettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jpSettings1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jfSettingsLayout.createSequentialGroup()
+                        .addComponent(jpSettings3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jpSettings2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpSettings2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpSettings3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbSettingsSave, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                .addComponent(jbSettingsSave, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -390,7 +438,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jpCameraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         jpCameraLayout.setVerticalGroup(
             jpCameraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -405,6 +453,7 @@ public class MainFrame extends javax.swing.JFrame {
         jpFace.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jpFace.setMaximumSize(new java.awt.Dimension(110, 110));
         jpFace.setMinimumSize(new java.awt.Dimension(110, 110));
+        jpFace.setPreferredSize(new java.awt.Dimension(110, 110));
 
         jlFace.setMaximumSize(new java.awt.Dimension(110, 110));
         jlFace.setMinimumSize(new java.awt.Dimension(110, 110));
@@ -414,11 +463,11 @@ public class MainFrame extends javax.swing.JFrame {
         jpFace.setLayout(jpFaceLayout);
         jpFaceLayout.setHorizontalGroup(
             jpFaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlFace, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+            .addComponent(jlFace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpFaceLayout.setVerticalGroup(
             jpFaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlFace, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jlFace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jbKimlikReset.setText("Tekrar Al");
@@ -426,22 +475,32 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Kimlik Tanıma");
 
+        jlGifFace.setMaximumSize(new java.awt.Dimension(25, 25));
+        jlGifFace.setMinimumSize(new java.awt.Dimension(25, 25));
+        jlGifFace.setPreferredSize(new java.awt.Dimension(25, 25));
+
         javax.swing.GroupLayout jpFaceMainContainerLayout = new javax.swing.GroupLayout(jpFaceMainContainer);
         jpFaceMainContainer.setLayout(jpFaceMainContainerLayout);
         jpFaceMainContainerLayout.setHorizontalGroup(
             jpFaceMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jbKimlikReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jpFaceMainContainerLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jpFaceMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpFace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jpFaceMainContainerLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jpFace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFaceMainContainerLayout.createSequentialGroup()
+                        .addComponent(jlGifFace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel2)))
+                .addContainerGap())
+            .addComponent(jbKimlikReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpFaceMainContainerLayout.setVerticalGroup(
             jpFaceMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFaceMainContainerLayout.createSequentialGroup()
-                .addComponent(jLabel2)
+                .addGroup(jpFaceMainContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jlGifFace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpFace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -460,27 +519,36 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("QR Kod / Barkod");
 
+        jlGifBarcode.setMaximumSize(new java.awt.Dimension(25, 25));
+        jlGifBarcode.setMinimumSize(new java.awt.Dimension(25, 25));
+        jlGifBarcode.setPreferredSize(new java.awt.Dimension(25, 25));
+
         javax.swing.GroupLayout jpBarcodeContainerLayout = new javax.swing.GroupLayout(jpBarcodeContainer);
         jpBarcodeContainer.setLayout(jpBarcodeContainerLayout);
         jpBarcodeContainerLayout.setHorizontalGroup(
             jpBarcodeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jbBarcodeReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jpBarcodeContainerLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBarcodeContainerLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addGroup(jpBarcodeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlBarcodeText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jpBarcodeContainerLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jbBarcodeReset, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBarcodeContainerLayout.createSequentialGroup()
+                        .addGroup(jpBarcodeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlBarcodeText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jpBarcodeContainerLayout.createSequentialGroup()
+                                .addComponent(jlGifBarcode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)))
+                        .addContainerGap())))
         );
         jpBarcodeContainerLayout.setVerticalGroup(
             jpBarcodeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBarcodeContainerLayout.createSequentialGroup()
-                .addComponent(jLabel3)
+                .addGroup(jpBarcodeContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jlGifBarcode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlBarcodeText, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbBarcodeReset)
                 .addContainerGap())
         );
@@ -594,11 +662,14 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabel5;
     public javax.swing.JLabel jLabel6;
+    public javax.swing.JLabel jLabel7;
+    public javax.swing.JPanel jPanel1;
     public javax.swing.JButton jbBarcodeReset;
     public javax.swing.JButton jbKimlikReset;
     public javax.swing.JButton jbResetAll;
     public javax.swing.JButton jbSaveAll;
     public javax.swing.JButton jbSaveFinal;
+    public javax.swing.JButton jbSaveLocationButton;
     public javax.swing.JButton jbSettings;
     public javax.swing.JButton jbSettingsSave;
     public javax.swing.JButton jbStartOver;
@@ -609,6 +680,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JCheckBox jcbKullanicidanOnayIste;
     public javax.swing.JCheckBox jcbResetBarcodeOnMotion;
     public javax.swing.JCheckBox jcbResetFaceOnMotion;
+    public javax.swing.JCheckBox jcbSound;
     public javax.swing.JCheckBox jcbUserCanChangeSettings;
     public javax.swing.JFrame jfSaveOnay;
     public javax.swing.JFrame jfSettings;
@@ -616,6 +688,8 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JLabel jlBarcodeText;
     public javax.swing.JLabel jlFace;
     public javax.swing.JLabel jlFaceOnay;
+    public javax.swing.JLabel jlGifBarcode;
+    public javax.swing.JLabel jlGifFace;
     public javax.swing.JLabel jlKimlikOnay;
     public javax.swing.JPanel jpBarcodeContainer;
     public javax.swing.JPanel jpBarcodeOnay;
@@ -635,5 +709,6 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JRadioButton jrbModeBarcodeOnly;
     public javax.swing.JRadioButton jrbModeBoth;
     public javax.swing.JRadioButton jrbModeFaceOnly;
+    public javax.swing.JTextField jtfSaveLocation;
     // End of variables declaration//GEN-END:variables
 }

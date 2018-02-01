@@ -1,9 +1,12 @@
 {"defaultCamera":"1.3M WebCam 0",
-"kullaniciOnayIste":true,
+"kullaniciOnayIste":false,
 "resetFaceOnMotion":false,
 "resetBarcodeOnMotion":false,
-"outputFolderName":"KimlikOutput",
 "mode":"BOTH",
-"exitOnSave":true,
-"barcodeSaveMode":"json",
-"autoSave":false}
+"exitOnSave":false,
+"barcodeSaveMode":"simple",
+"autoSave":false,
+"userCanChangeSettings":false,
+"firstRun":false,
+"sound":true,
+"outputPath":"C:\\Users\\Cagdas\\Desktop\\çıktı son"}

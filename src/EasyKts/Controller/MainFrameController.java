@@ -11,24 +11,26 @@ import EasyKts.Common.FaceDetector;
 import EasyKts.Common.FileSaver;
 import EasyKts.Model.Settings;
 import EasyKts.Model.Surat;
+import EasyKts.System.GeneralFunctions;
 import EasyKts.System.SettingFunctions;
 import EasyKts.System.projectEnum;
 import EasyKts.View.MainFrame;
 import com.google.zxing.Result;
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -52,15 +54,26 @@ public class MainFrameController {
     private Surat currentSurat;
     private Result barcodeResult;
 
+    private String beepPath = "resource/beep.wav";
+
     public MainFrameController() {
         MainFrame view = new MainFrame();
         view.setLocationRelativeTo(null);
         view.setSize((int) screenSize.width / 3, (int) (screenSize.height / 5) * 4);
-        view.jfSettings.setSize((int) screenSize.width / 3, (int) (screenSize.height / 5) * 3);
+//        view.jfSettings.setSize((int) (screenSize.width / 2.75), (int) (screenSize.height / 1.85));
+        view.jfSettings.setSize(500, 395);
         view.jfSettings.setLocationRelativeTo(null);
 
         view.jbSettings.setVisible(SettingFunctions.getSettings().getUserCanChangeSettings());
         Boolean isFirstRun = SettingFunctions.getSettings().getFirstRun();
+
+        if (isFirstRun) {
+            view.jtfSaveLocation.setText(new File(SettingFunctions.getSettings().getOutputPath()).getAbsolutePath());
+            view.jfSettings.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        } else {
+            view.jfSettings.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        }
+
         view.jfSettings.setVisible(isFirstRun);
         view.setVisible(!isFirstRun);
 
@@ -98,8 +111,17 @@ public class MainFrameController {
             ImageIcon img = new ImageIcon("resource/logo.png");
             frame.setIconImage(img.getImage());
             frame.jfSaveOnay.setIconImage(img.getImage());
+            frame.jfSettings.setIconImage(img.getImage());
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
+        }
+
+        try {
+            ImageIcon img = new ImageIcon("resource/run.gif");
+            frame.jlGifBarcode.setIcon(img);
+            frame.jlGifFace.setIcon(img);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         //INIT CAMERA AND RUN THREADS
@@ -279,7 +301,31 @@ public class MainFrameController {
         frame.jbSettings.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.jtfSaveLocation.setText(SettingFunctions.getSettings().getOutputPath());
                 frame.jfSettings.setVisible(true);
+            }
+        });
+
+        frame.jbSaveLocationButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser chooser = new JFileChooser();
+                chooser.setCurrentDirectory(new java.io.File("."));
+                chooser.setDialogTitle("Kayıt Klasoru");
+                chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+                chooser.setAcceptAllFileFilterUsed(false);
+                
+                if (chooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
+//                    System.out.println("getCurrentDirectory(): "
+//                            + chooser.getCurrentDirectory());
+//                    System.out.println("getSelectedFile() : "
+//                            + chooser.getSelectedFile());
+                    frame.jtfSaveLocation.setText(chooser.getSelectedFile().getAbsolutePath());
+                } else {
+                    System.out.println("No Selection ");
+                }
             }
         });
 
@@ -294,10 +340,10 @@ public class MainFrameController {
                 newSettings.setExitOnSave(frame.jcbExitOnSave.isSelected());
                 newSettings.setAutoSave(frame.jcbAutoSave.isSelected());
                 newSettings.setUserCanChangeSettings(frame.jcbUserCanChangeSettings.isSelected());
-
+                newSettings.setSound(frame.jcbSound.isSelected());
                 projectEnum.BarcodeSaveFormat format = frame.jrbBarcodeFormatJSON.isSelected() ? projectEnum.BarcodeSaveFormat.json : projectEnum.BarcodeSaveFormat.simple;
                 newSettings.setBarcodeSaveMode(format);
-
+                newSettings.setOutputPath(frame.jtfSaveLocation.getText());
                 projectEnum.mode mode = null;
                 mode = frame.jrbModeBoth.isSelected() ? projectEnum.mode.BOTH : mode;
                 mode = frame.jrbModeFaceOnly.isSelected() ? projectEnum.mode.FACE : mode;
@@ -305,9 +351,9 @@ public class MainFrameController {
 
                 newSettings.setMode(mode);
                 newSettings.setFirstRun(false);
-                
+
                 SettingFunctions.setSettings(newSettings);
-                JOptionPane.showMessageDialog(frame, "Ayarlarınız kaydedildi.Etkili olması için lütfen yeniden başlatın.");
+                JOptionPane.showMessageDialog(frame, "Ayarlarınız kaydedildi.Etkili olması için lütfen KTS uygulamasını yeniden başlatın.");
                 System.exit(0);
             }
         });
@@ -362,6 +408,15 @@ public class MainFrameController {
             }
         }
         if (success) {
+            new Thread(new Runnable() {
+
+                @Override
+                public void run() {
+                    JOptionPane.showMessageDialog(null,
+                            "Kayıt başarılı.",
+                            "Metasoft KTS", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }).start();
             if (SettingFunctions.getSettings().getExitOnSave()) {
                 System.exit(0);
             }
@@ -381,6 +436,13 @@ public class MainFrameController {
         frame.jlKimlikOnay.revalidate();
         frame.jlKimlikOnay.revalidate();
 
+        frame.jpFaceMainContainer.setBackground(new Color(102, 102, 0));
+        frame.jlGifFace.setVisible(false);
+        try {
+            GeneralFunctions.playSound(beepPath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         checkAutoSave();
     }
 
@@ -389,6 +451,15 @@ public class MainFrameController {
         frame.jlBarcodeText.setText(result.getText());
         frame.jlBarcodeOkunan.setText(result.getText());
 
+        frame.jpBarcodeContainer.setBackground(new Color(102, 102, 0));
+
+        frame.jlGifBarcode.setVisible(false);
+        try {
+            GeneralFunctions.playSound(beepPath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         checkAutoSave();
     }
 
@@ -396,6 +467,10 @@ public class MainFrameController {
         barcodeResult = null;
         frame.jlBarcodeText.setText("...");
         frame.jlBarcodeOkunan.setText("Okunamadı!");
+
+        frame.jpBarcodeContainer.setBackground(new Color(240, 240, 240));
+        frame.jlGifBarcode.setVisible(true);
+
         if (scan) {
             if (barcodeReader != null) {
                 barcodeReader.startBarcodeThread(915000L);
@@ -420,6 +495,8 @@ public class MainFrameController {
         frame.jlKimlikOnay.setIcon(null);
         frame.jlKimlikOnay.revalidate();
         frame.jlKimlikOnay.repaint();
+        frame.jpFaceMainContainer.setBackground(new Color(240, 240, 240));
+        frame.jlGifFace.setVisible(true);
 
         if (scan) {
             faceDetector.startFaceDetectionThread(915000L);

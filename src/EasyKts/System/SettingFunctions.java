@@ -17,7 +17,7 @@ import java.util.logging.Level;
  *
  * @author Administrator
  */
-public class SettingFunctions {
+    public class SettingFunctions {
 
     private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(SettingFunctions.class.getName());
 
@@ -52,7 +52,6 @@ public class SettingFunctions {
         Settings settings = new Settings();
         settings.setDefaultCamera("not yet set!");
         settings.setKullaniciOnayIste(false);
-        settings.setOutputFolderName("KimlikOutput");
         settings.setMode(projectEnum.mode.BOTH);
         settings.setResetBarcodeOnMotion(false);
         settings.setResetFaceOnMotion(false);
@@ -61,6 +60,9 @@ public class SettingFunctions {
         settings.setAutoSave(false);
         settings.setFirstRun(true);
         settings.setUserCanChangeSettings(false);
+        settings.setSound(true);
+        settings.setOutputPath("KimlikOutput");
+
         return settings;
     }
 

@@ -61,7 +61,7 @@ public class run {
                     + " -resetFaceOnMotion=true|false \n"
                     + " -resetBarcodeOnMotion=true|false \n"
                     + " -mode=\"face\"|\"barcode\"|\"both\" \n"
-                    + " -outputFolderName=\"KimlikOutput\" \n"
+                    + " -setOutputPath=\"KimlikOutput\" \n"
                     + " -barcodeSaveMode=\"simple\"|\"json\"  \n"
                     + " -exitOnSave=true|false  \n"
                     + " -autoSave=true|false  \n",
@@ -145,9 +145,9 @@ public class run {
             }
         }
 
-        if (getArgOption("-outputFolderName", args) != null) {
+        if (getArgOption("-setOutputPath", args) != null) {
             try {
-                s.setOutputFolderName(getArgOption("-outputFolderName", args));
+                s.setOutputPath(getArgOption("-setOutputPath", args));
                 SettingFunctions.setSettings(s);
             } catch (Exception e) {
                 LOGGER.log(Level.SEVERE, e.toString(), e);
@@ -185,7 +185,7 @@ public class run {
                 LOGGER.log(Level.SEVERE, e.toString(), e);
             }
         }
-        
+
         if (getArgOption("-autoSave", args) != null) {
             try {
                 s.setAutoSave(Boolean.valueOf(getArgOption("-autoSave", args)));
@@ -225,6 +225,21 @@ public class run {
         System.setErr(new PrintStream(fileLogger));
     }
 
+    private static void logJavaInf() {
+        String info = "";
+        info += "\n" + System.getProperties().getProperty("java.home");
+        info += "\n" + System.getProperties().getProperty("java.vendor");
+        info += "\n" + System.getProperties().getProperty("java.vendor.url");
+        info += "\n" + System.getProperties().getProperty("java.version");
+        info += "\n" + System.getProperties().getProperty("os.arch");
+        info += "\n" + System.getProperties().getProperty("os.name");
+        info += "\n" + System.getProperties().getProperty("user.dir");
+        info += "\n" + System.getProperties().getProperty("java.class.path");
+        info += "\n" + System.getProperties().getProperty("user.home");
+        info += "\n" + System.getProperties().getProperty("user.name");
+        LOGGER.log(Level.INFO, "java inf:" + info);
+    }
+
     public static void main(String[] args) {
 //        //debug
 //        args = new String[4];
@@ -238,5 +253,6 @@ public class run {
         startLogger();
         setLookAndFeel();
         new MainFrameController();
+        logJavaInf();
     }
 }

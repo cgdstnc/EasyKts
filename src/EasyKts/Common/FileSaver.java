@@ -35,7 +35,7 @@ public class FileSaver {
 
     public static void save(BufferedImage img, boolean addWatermark, String fileName) throws IOException {
 
-        File folder = new File(SettingFunctions.getSettings().getOutputFolderName());
+        File folder = new File(SettingFunctions.getSettings().getOutputPath());
         folder.mkdirs();
         File f = new File(folder.getAbsolutePath() + "\\" + fileName);
 
@@ -54,7 +54,7 @@ public class FileSaver {
     }
 
     public static void save(String text, String file) throws IOException {
-        File folder = new File(SettingFunctions.getSettings().getOutputFolderName());
+        File folder = new File(SettingFunctions.getSettings().getOutputPath());
         folder.mkdirs();
         File f = new File(folder.getAbsolutePath() + "\\" + file);
         FileWriter fileWriter = new FileWriter(f);
@@ -64,7 +64,7 @@ public class FileSaver {
     }
 
     public static void saveJson(Object obj, String file) throws IOException {
-        File folder = new File(SettingFunctions.getSettings().getOutputFolderName());
+        File folder = new File(SettingFunctions.getSettings().getOutputPath());
         folder.mkdirs();
         File f = new File(folder.getAbsolutePath() + "\\" + file);
 

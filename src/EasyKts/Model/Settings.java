@@ -17,13 +17,14 @@ public class Settings {
     private Boolean kullaniciOnayIste;
     private Boolean resetFaceOnMotion;
     private Boolean resetBarcodeOnMotion;
-    private String outputFolderName;
     private projectEnum.mode mode;
     private Boolean exitOnSave;
     private projectEnum.BarcodeSaveFormat barcodeSaveMode;
     private Boolean autoSave;
     private Boolean userCanChangeSettings;
     private Boolean firstRun;
+    private Boolean sound;
+    private String outputPath;
 
     public Boolean getKullaniciOnayIste() {
         return (kullaniciOnayIste != null) ? kullaniciOnayIste : false;
@@ -57,12 +58,12 @@ public class Settings {
         this.resetBarcodeOnMotion = resetBarcodeOnMotion;
     }
 
-    public String getOutputFolderName() {
-        return (outputFolderName != null) ? outputFolderName : "KimlikOutput";
+    public String getOutputPath() {
+        return outputPath;
     }
 
-    public void setOutputFolderName(String outputFolderName) {
-        this.outputFolderName = outputFolderName;
+    public void setOutputPath(String outputPath) {
+        this.outputPath = outputPath;
     }
 
     public projectEnum.mode getMode() {
@@ -113,8 +114,18 @@ public class Settings {
         this.firstRun = firstRun;
     }
 
+    public Boolean getSound() {
+        return sound;
+    }
+
+    public void setSound(Boolean sound) {
+        this.sound = sound;
+    }
+
     @Override
     public String toString() {
-        return "Settings{" + "defaultCamera=" + defaultCamera + ", kullaniciOnayIste=" + kullaniciOnayIste + ", resetFaceOnMotion=" + resetFaceOnMotion + ", resetBarcodeOnMotion=" + resetBarcodeOnMotion + ", outputFolderName=" + outputFolderName + ", mode=" + mode + ", exitOnSave=" + exitOnSave + ", barcodeSaveMode=" + barcodeSaveMode + ", autoSave=" + autoSave + ", userCanChangeSettings=" + userCanChangeSettings + ", firstRun=" + firstRun + '}';
+        return "Settings{" + "defaultCamera=" + defaultCamera + ", kullaniciOnayIste=" + kullaniciOnayIste + ", resetFaceOnMotion=" + resetFaceOnMotion + ", resetBarcodeOnMotion=" + resetBarcodeOnMotion + ", outputPath=" + outputPath + ", mode=" + mode + ", exitOnSave=" + exitOnSave + ", barcodeSaveMode=" + barcodeSaveMode + ", autoSave=" + autoSave + ", userCanChangeSettings=" + userCanChangeSettings + ", firstRun=" + firstRun + ", sound=" + sound + '}';
     }
+
+    
 }
