@@ -59,7 +59,7 @@ public class MainFrameController {
     public MainFrameController() {
         MainFrame view = new MainFrame();
         view.setLocationRelativeTo(null);
-        view.setSize((int) screenSize.width / 3, (int) (screenSize.height / 5) * 4);
+        view.setSize((int) screenSize.width / (5 / 2), (int) (screenSize.height / 5) * 4);
 //        view.jfSettings.setSize((int) (screenSize.width / 2.75), (int) (screenSize.height / 1.85));
         view.jfSettings.setSize(500, 395);
         view.jfSettings.setLocationRelativeTo(null);
@@ -316,7 +316,7 @@ public class MainFrameController {
                 chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
                 chooser.setAcceptAllFileFilterUsed(false);
-                
+
                 if (chooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {
 //                    System.out.println("getCurrentDirectory(): "
 //                            + chooser.getCurrentDirectory());
@@ -355,6 +355,25 @@ public class MainFrameController {
                 SettingFunctions.setSettings(newSettings);
                 JOptionPane.showMessageDialog(frame, "Ayarlarınız kaydedildi.Etkili olması için lütfen KTS uygulamasını yeniden başlatın.");
                 System.exit(0);
+            }
+        });
+
+        frame.jbInf.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String info = "";
+                info += "\n" + System.getProperties().getProperty("java.home");
+                info += "\n" + System.getProperties().getProperty("java.vendor");
+                info += "\n" + System.getProperties().getProperty("java.vendor.url");
+                info += "\n" + System.getProperties().getProperty("java.version");
+                info += "\n" + System.getProperties().getProperty("os.arch");
+                info += "\n" + System.getProperties().getProperty("os.name");
+                info += "\n" + System.getProperties().getProperty("user.dir");
+                info += "\n" + System.getProperties().getProperty("java.class.path");
+                info += "\n" + System.getProperties().getProperty("user.home");
+                info += "\n" + System.getProperties().getProperty("user.name");
+                JOptionPane.showMessageDialog(null, info, "Info", 2);
             }
         });
     }
@@ -425,9 +444,20 @@ public class MainFrameController {
 
     public void setSurat(Surat surat) {
         currentSurat = surat;
-        frame.jlFace.setIcon(new ImageIcon(surat.getSurat().getScaledInstance(110, 110, 1)));
-        frame.jlFaceOnay.setIcon(new ImageIcon(surat.getSurat().getScaledInstance(110, 110, 1)));
-        frame.jlKimlikOnay.setIcon(new ImageIcon(surat.getSource().getScaledInstance(196, 110, 1)));//16:9
+//        frame.jlFace.setIcon(new ImageIcon(surat.getSurat().getScaledInstance(110, 110, 1)));
+//        frame.jlFaceOnay.setIcon(new ImageIcon(surat.getSurat().getScaledInstance(110, 110, 1)));
+//        frame.jlKimlikOnay.setIcon(new ImageIcon(surat.getSource().getScaledInstance(196, 110, 1)));//16:9
+        float faceScale = GeneralFunctions.getFitScreenScale(110, 110, surat.getSurat());
+        int scaled_w = (int) (surat.getSurat().getWidth() * faceScale);
+        int scaled_h = (int) (surat.getSurat().getHeight() * faceScale);
+
+        float kimlikScale = GeneralFunctions.getFitScreenScale(196, 110, surat.getSource());
+        int kimlikScaled_w = (int) (surat.getSource().getWidth() * kimlikScale);
+        int kimliScaled_h = (int) (surat.getSource().getHeight() * kimlikScale);
+
+        frame.jlFace.setIcon(new ImageIcon(surat.getSurat().getScaledInstance(scaled_w, scaled_h, 1)));
+        frame.jlFaceOnay.setIcon(new ImageIcon(surat.getSurat().getScaledInstance(scaled_w, scaled_h, 1)));
+        frame.jlKimlikOnay.setIcon(new ImageIcon(surat.getSource().getScaledInstance(kimlikScaled_w, kimliScaled_h, 1)));//16:9
 
         frame.jlFace.revalidate();
         frame.jlFace.repaint();

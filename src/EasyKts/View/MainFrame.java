@@ -59,6 +59,7 @@ public class MainFrame extends javax.swing.JFrame {
         jrbModeFaceOnly = new javax.swing.JRadioButton();
         jrbModeBarcodeOnly = new javax.swing.JRadioButton();
         jrbModeBoth = new javax.swing.JRadioButton();
+        jbInf = new javax.swing.JButton();
         jbSettingsSave = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jtfSaveLocation = new javax.swing.JTextField();
@@ -209,6 +210,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jcbAutoSave.setText("Otomatik kaydet");
 
+        jcbUserCanChangeSettings.setSelected(true);
         jcbUserCanChangeSettings.setText("Ayarlara sonradan erişim");
 
         jcbSound.setSelected(true);
@@ -303,6 +305,8 @@ public class MainFrame extends javax.swing.JFrame {
         jrbModeBoth.setSelected(true);
         jrbModeBoth.setText("Yüz ve Barkod");
 
+        jbInf.setText("Inf");
+
         javax.swing.GroupLayout jpSettings3Layout = new javax.swing.GroupLayout(jpSettings3);
         jpSettings3.setLayout(jpSettings3Layout);
         jpSettings3Layout.setHorizontalGroup(
@@ -310,7 +314,8 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jpSettings3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbInf))
             .addGroup(jpSettings3Layout.createSequentialGroup()
                 .addGroup(jpSettings3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jrbModeFaceOnly)
@@ -321,8 +326,10 @@ public class MainFrame extends javax.swing.JFrame {
         jpSettings3Layout.setVerticalGroup(
             jpSettings3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpSettings3Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jLabel6)
+                .addGap(1, 1, 1)
+                .addGroup(jpSettings3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jbInf))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jrbModeFaceOnly)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -665,6 +672,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel7;
     public javax.swing.JPanel jPanel1;
     public javax.swing.JButton jbBarcodeReset;
+    public javax.swing.JButton jbInf;
     public javax.swing.JButton jbKimlikReset;
     public javax.swing.JButton jbResetAll;
     public javax.swing.JButton jbSaveAll;

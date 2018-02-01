@@ -3,17 +3,21 @@
   <dontWrapJar>true</dontWrapJar>
   <headerType>gui</headerType>
   <jar>EasyKts.jar</jar>
-  <outfile>C:\Users\Cagdas\Documents\NetBeansProjects\EasyKts\dist\kts.exe</outfile>
+  <outfile>C:\Users\Cagdas\Documents\NetBeansProjects\EasyKts\dist\KTS.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
   <priority>normal</priority>
   <downloadUrl>http://java.com/download</downloadUrl>
   <supportUrl></supportUrl>
-  <stayAlive>false</stayAlive>
+  <stayAlive>true</stayAlive>
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
-  <icon></icon>
+  <icon>C:\Users\Cagdas\Documents\NetBeansProjects\EasyKts\resource\logo.ico</icon>
+  <singleInstance>
+    <mutexName>metasoft_kts</mutexName>
+    <windowTitle></windowTitle>
+  </singleInstance>
   <jre>
     <path>jre</path>
     <bundledJre64Bit>false</bundledJre64Bit>

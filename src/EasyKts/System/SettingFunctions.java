@@ -59,10 +59,10 @@ import java.util.logging.Level;
         settings.setExitOnSave(true);
         settings.setAutoSave(false);
         settings.setFirstRun(true);
-        settings.setUserCanChangeSettings(false);
+        settings.setUserCanChangeSettings(true);
         settings.setSound(true);
         settings.setOutputPath("KimlikOutput");
-
+            
         return settings;
     }
 
