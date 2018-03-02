@@ -305,7 +305,7 @@ public class MainFrame extends javax.swing.JFrame {
         jrbModeBoth.setSelected(true);
         jrbModeBoth.setText("Yüz ve Barkod");
 
-        jbInf.setText("Inf");
+        jbInf.setText("Info");
 
         javax.swing.GroupLayout jpSettings3Layout = new javax.swing.GroupLayout(jpSettings3);
         jpSettings3.setLayout(jpSettings3Layout);

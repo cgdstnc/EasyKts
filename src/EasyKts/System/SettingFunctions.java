@@ -61,7 +61,7 @@ import java.util.logging.Level;
         settings.setFirstRun(true);
         settings.setUserCanChangeSettings(true);
         settings.setSound(true);
-        settings.setOutputPath("KimlikOutput");
+        settings.setOutputPath("C:\\PROTEZ\\KTS\\KimlikOutput");
             
         return settings;
     }

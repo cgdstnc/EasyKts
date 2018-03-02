@@ -39,6 +39,9 @@ import javax.swing.JOptionPane;
  */
 public class MainFrameController {
 
+    private static final String KTS_VERSION = "0.180302";//build aldığım tarih yymmdd şeklinde
+    private static final String KTS_HOME = "http://www.protez.com.tr/kts.asp";//build aldığım tarih yymmdd şeklinde
+
     private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger(MainFrameController.class.getName());
 
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -363,6 +366,9 @@ public class MainFrameController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String info = "";
+                info += "\n KTS Version :" + KTS_VERSION;
+                info += "\n KTS Anasayfa:" + KTS_HOME;
+                info += "\n";
                 info += "\n" + System.getProperties().getProperty("java.home");
                 info += "\n" + System.getProperties().getProperty("java.vendor");
                 info += "\n" + System.getProperties().getProperty("java.vendor.url");
@@ -370,7 +376,7 @@ public class MainFrameController {
                 info += "\n" + System.getProperties().getProperty("os.arch");
                 info += "\n" + System.getProperties().getProperty("os.name");
                 info += "\n" + System.getProperties().getProperty("user.dir");
-                info += "\n" + System.getProperties().getProperty("java.class.path");
+//                info += "\n" + System.getProperties().getProperty("java.class.path");
                 info += "\n" + System.getProperties().getProperty("user.home");
                 info += "\n" + System.getProperties().getProperty("user.name");
                 JOptionPane.showMessageDialog(null, info, "Info", 2);
@@ -389,7 +395,7 @@ public class MainFrameController {
         if (currentSurat != null) {
             try {
                 FileSaver.save(currentSurat.getSource(), true, "kimlik.jpg");
-                FileSaver.save(currentSurat.getSurat(), false, "surat.jpg");
+                FileSaver.save(currentSurat.getSurat(), false, "yuz.jpg");
             } catch (Exception ex) {
                 success = false;
                 JOptionPane.showMessageDialog(null,
@@ -433,7 +439,7 @@ public class MainFrameController {
                 public void run() {
                     JOptionPane.showMessageDialog(null,
                             "Kayıt başarılı.",
-                            "Metasoft KTS", JOptionPane.INFORMATION_MESSAGE);
+                            "KTS", JOptionPane.INFORMATION_MESSAGE);
                 }
             }).start();
             if (SettingFunctions.getSettings().getExitOnSave()) {
@@ -466,7 +472,7 @@ public class MainFrameController {
         frame.jlKimlikOnay.revalidate();
         frame.jlKimlikOnay.revalidate();
 
-        frame.jpFaceMainContainer.setBackground(new Color(102, 102, 0));
+        frame.jpFaceMainContainer.setBackground(new Color(140, 186, 16));
         frame.jlGifFace.setVisible(false);
         try {
             GeneralFunctions.playSound(beepPath);
@@ -481,7 +487,7 @@ public class MainFrameController {
         frame.jlBarcodeText.setText(result.getText());
         frame.jlBarcodeOkunan.setText(result.getText());
 
-        frame.jpBarcodeContainer.setBackground(new Color(102, 102, 0));
+        frame.jpBarcodeContainer.setBackground(new Color(140, 186, 16));
 
         frame.jlGifBarcode.setVisible(false);
         try {

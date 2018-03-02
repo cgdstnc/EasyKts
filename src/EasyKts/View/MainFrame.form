@@ -491,7 +491,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jbInf">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inf"/>
+                <Property name="text" type="java.lang.String" value="Info"/>
               </Properties>
             </Component>
           </SubComponents>

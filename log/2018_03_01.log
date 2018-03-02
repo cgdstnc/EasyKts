@@ -1,0 +1,23 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/D:/libs/Tess4J/Tess4J-3.4.1/lib/logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/D:/libs/openIMAJ/slf4j-jdk14-1.5.6.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+15:07:24.644 [main] INFO com.github.sarxos.webcam.Webcam - WebcamDefaultDriver capture driver will be used
+15:07:24.668 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+15:07:28.996 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+15:07:32.016 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/D:/libs/Tess4J/Tess4J-3.4.1/lib/logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/D:/libs/openIMAJ/slf4j-jdk14-1.5.6.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+15:07:40.908 [main] INFO com.github.sarxos.webcam.Webcam - WebcamDefaultDriver capture driver will be used
+15:07:40.924 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/D:/libs/Tess4J/Tess4J-3.4.1/lib/logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/D:/libs/openIMAJ/slf4j-jdk14-1.5.6.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+15:09:36.805 [main] INFO com.github.sarxos.webcam.Webcam - WebcamDefaultDriver capture driver will be used
+15:09:36.820 [webcam-discovery-service] DEBUG com.github.sarxos.webcam.ds.buildin.WebcamDefaultDriver - Searching devices

@@ -6,7 +6,7 @@
 "exitOnSave":false,
 "barcodeSaveMode":"simple",
 "autoSave":false,
-"userCanChangeSettings":true,
+"userCanChangeSettings":false,
 "firstRun":false,
 "sound":true,
-"outputPath":"C:\\PROTEZ\\KTS\\KimlikOutput"}
+"outputPath":"C:\\Users\\Cagdas\\Desktop\\çıktı son"}
